@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import Header from "../components/Header";
-import Box from "../components/Box";
+import Header from '../components/Header';
+import Box from '../components/Box';
 
-import { Container } from "./styles";
+import { Container } from './styles';
 
 function Home() {
   return (

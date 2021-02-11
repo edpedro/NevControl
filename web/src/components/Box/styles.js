@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   ArrowUpCircleFill,
   ArrowDownCircleFill,
   MoneyDollarCircle,
-} from "../../styles/Icons";
+} from '../../styles/Icons';
 
 export const Container = styled.div`
   display: flex;

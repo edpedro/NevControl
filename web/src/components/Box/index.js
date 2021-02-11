@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Container,
@@ -15,7 +15,7 @@ import {
   MoneyIcon,
   BoxButton,
   Button,
-} from "./styles";
+} from './styles';
 
 function Box() {
   return (

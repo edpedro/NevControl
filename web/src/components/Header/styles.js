@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { LogInCircle } from "../../styles/Icons";
+import styled from 'styled-components';
+import { LogInCircle } from '../../styles/Icons';
 
 export const Container = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ export const Button = styled.div`
     }
   }
   &::after {
-    content: "";
+    content: '';
     display: block;
     width: 0;
     height: 2px;
