@@ -1,0 +1,23 @@
+[33mcommit 0ac628e93ded2147da4fc33f7b62f67f8cf1e48c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: edpedro <edp2013.ep@gmail.com>
+Date:   Thu Feb 11 20:15:32 2021 -0300
+
+    feat: Configuração do Prettier e Husky com lint staged
+
+[33mcommit 3b64cf04c95fac98c35ff8a43d8d7a3143de6a45[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: edpedro <edp2013.ep@gmail.com>
+Date:   Thu Feb 11 19:32:37 2021 -0300
+
+    feat: Implementação do box
+
+[33mcommit 9b01526b9d1273c26517fd54f7832847f6e7005c[m
+Author: edpedro <edp2013.ep@gmail.com>
+Date:   Mon Feb 8 20:17:45 2021 -0300
+
+    feat: Implementação do Menu
+
+[33mcommit 87f00d492b281c56a2b580e1148ef0f04e68e11e[m
+Author: edpedro <edp2013.ep@gmail.com>
+Date:   Mon Feb 8 19:32:29 2021 -0300
+
+    feat: Primeiro commit
