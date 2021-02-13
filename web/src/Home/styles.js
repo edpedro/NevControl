@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
-export const Grid = styled.div`
+export const GridCard = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
@@ -34,4 +34,8 @@ export const IconPlus = styled(Plus)`
   width: 60px;
   height: 60px;
   fill: var(--secondary);
+`;
+
+export const Grid = styled.div`
+  display: flex;
 `;

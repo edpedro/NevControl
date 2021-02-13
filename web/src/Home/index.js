@@ -3,20 +3,26 @@ import React from 'react';
 import Header from '../components/Header';
 import Box from '../components/Box';
 import Card from '../components/Card';
+import Transaction from '../components/Transaction';
 
-import { Container, Grid, CardNew, IconPlus } from './styles';
+import { Container, GridCard, CardNew, IconPlus, Grid } from './styles';
 
 function Home() {
   return (
     <Container>
       <Header />
       <Box />
-      <Grid>
+
+      <GridCard>
         <Card />
         <Card />
         <CardNew>
           <IconPlus />
         </CardNew>
+      </GridCard>
+
+      <Grid>
+        <Transaction />
       </Grid>
     </Container>
   );
