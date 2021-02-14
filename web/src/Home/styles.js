@@ -14,6 +14,10 @@ export const Container = styled.div`
 export const GridCard = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 1231px) {
+    justify-content: center;
+  }
 `;
 
 export const CardNew = styled.div`
@@ -39,6 +43,10 @@ export const IconPlus = styled(Plus)`
 export const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 1231px) {
+    justify-content: center;
+  }
 `;
 
 export const GridItem = styled.div`

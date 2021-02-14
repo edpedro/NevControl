@@ -84,7 +84,7 @@ export const BoxTransaction = styled.div`
   height: 228px;
   margin: 0 10px;
 
-  @media (max-width: 1265px) {
+  @media (max-width: 1283px) {
     width: 526px;
   }
 `;
@@ -94,6 +94,10 @@ export const BoxExit = styled.div`
   justify-content: space-around;
 
   margin-top: 30px;
+
+  h2 {
+    font-size: 20px;
+  }
 `;
 export const AmountExit = styled.div`
   display: flex;
@@ -119,6 +123,10 @@ export const BoxTotal = styled.div`
   justify-content: space-around;
 
   margin-top: 15px;
+
+  h2 {
+    font-size: 20px;
+  }
 `;
 
 export const AmountTotal = styled.div`
