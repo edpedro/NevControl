@@ -54,7 +54,13 @@ export const IconPlus = styled(Plus)`
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  transition: 0.2s;
   cursor: pointer;
+
+  &:hover {
+    background: var(--nevGrey);
+    fill: var(--nevGree);
+  }
 `;
 export const Expense = styled.div`
   display: flex;
@@ -73,5 +79,11 @@ export const IconMinus = styled(MinusSm)`
   border-radius: 50%;
   width: 50px;
   height: 50px;
+  transition: 0.2s;
   cursor: pointer;
+
+  &:hover {
+    background: var(--nevGrey);
+    fill: var(--nevRed);
+  }
 `;

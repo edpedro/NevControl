@@ -5,6 +5,7 @@ import Box from '../components/Box';
 import Card from '../components/Card';
 import Transaction from '../components/Transaction';
 import QuickAccess from '../components/QuickAccess';
+import CardExternal from '../components/CardExternal';
 
 import {
   Container,
@@ -33,6 +34,7 @@ function Home() {
         <Transaction />
         <GridItem>
           <QuickAccess />
+          <CardExternal />
         </GridItem>
       </Grid>
     </Container>
