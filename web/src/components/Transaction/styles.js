@@ -11,6 +11,17 @@ export const Container = styled.div`
   padding: 10px 40px;
   border-radius: 10px;
   background: var(--white);
+`;
+export const Header = styled.div`
+  font-size: 14px;
+
+  h2 {
+    text-align: center;
+  }
+`;
+export const Grid = styled.div`
+  padding: 20px 0px;
+
   overflow: auto;
 
   ::-webkit-scrollbar-track {
@@ -26,16 +37,6 @@ export const Container = styled.div`
   ::-webkit-scrollbar-track-piece {
     height: 4px;
   }
-`;
-export const Header = styled.div`
-  font-size: 14px;
-
-  h2 {
-    text-align: center;
-  }
-`;
-export const Grid = styled.div`
-  padding: 20px 0px;
 `;
 export const GrindItem = styled.ul`
   display: flex;

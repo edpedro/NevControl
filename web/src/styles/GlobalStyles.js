@@ -26,6 +26,7 @@ export default createGlobalStyle`
     --secondary: #696B85;
     --nevGree: #058373;
     --white: #FFFFFF;
+    --white_1: #f2f2f2;
     --nevBrack: #000;
     --nevRed: #EC1C24;
     --nevGrey: #DBDDE6;  

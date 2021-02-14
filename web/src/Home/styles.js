@@ -38,4 +38,10 @@ export const IconPlus = styled(Plus)`
 
 export const Grid = styled.div`
   display: flex;
+  flex-wrap: wrap;
+`;
+
+export const GridItem = styled.div`
+  display: flex;
+  flex-direction: column;
 `;

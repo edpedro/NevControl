@@ -4,8 +4,16 @@ import Header from '../components/Header';
 import Box from '../components/Box';
 import Card from '../components/Card';
 import Transaction from '../components/Transaction';
+import QuickAccess from '../components/QuickAccess';
 
-import { Container, GridCard, CardNew, IconPlus, Grid } from './styles';
+import {
+  Container,
+  GridCard,
+  CardNew,
+  IconPlus,
+  Grid,
+  GridItem,
+} from './styles';
 
 function Home() {
   return (
@@ -23,6 +31,9 @@ function Home() {
 
       <Grid>
         <Transaction />
+        <GridItem>
+          <QuickAccess />
+        </GridItem>
       </Grid>
     </Container>
   );
