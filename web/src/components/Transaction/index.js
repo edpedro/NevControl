@@ -1,4 +1,4 @@
-import { Container, Header, Grid } from './styles';
+import { Container, Header, Grid, GrindItem } from './styles';
 
 function Transaction() {
   return (
@@ -7,46 +7,150 @@ function Transaction() {
         <h2>Mais recente lançamento</h2>
       </Header>
       <Grid>
-        <ul>
+        <GrindItem red>
           <li>
-            <span>06/02</span>
+            <p>06/02</p>
           </li>
           <li>Eduardo</li>
           <li>
-            <span>Salario</span>
-          </li>
-          <li>
-            R$<span> + 150,00</span>
-          </li>
-        </ul>
-      </Grid>
-      <Grid red>
-        <ul>
-          <li>
-            <span>06/02</span>
-          </li>
-          <li>Eduardo</li>
-          <li>
-            <span>Salario</span>
+            <p>Salario</p>
           </li>
           <li>
             R$<span> - 150,00</span>
           </li>
-        </ul>
-      </Grid>
-      <Grid>
-        <ul>
+        </GrindItem>
+        <GrindItem>
           <li>
-            <span>06/02</span>
+            <p>06/02</p>
           </li>
           <li>Eduardo</li>
           <li>
-            <span>Salario</span>
+            <p>Salario</p>
           </li>
           <li>
             R$<span> + 150,00</span>
           </li>
-        </ul>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
+        <GrindItem>
+          <li>
+            <p>06/02</p>
+          </li>
+          <li>Eduardo</li>
+          <li>
+            <p>Salario</p>
+          </li>
+          <li>
+            R$<span> + 150,00</span>
+          </li>
+        </GrindItem>
       </Grid>
     </Container>
   );

@@ -12,37 +12,45 @@ export const Container = styled.div`
   border-radius: 10px;
   background: var(--white);
   overflow: auto;
+
+  ::-webkit-scrollbar-track {
+    background-color: #f4f4f4;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: #f4f4f4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #dad7d7;
+  }
+  ::-webkit-scrollbar-track-piece {
+    height: 4px;
+  }
 `;
 export const Header = styled.div`
   font-size: 14px;
 
-  > h2 {
+  h2 {
     text-align: center;
   }
 `;
 export const Grid = styled.div`
   padding: 20px 0px;
+`;
+export const GrindItem = styled.ul`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 
-  > ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+  list-style: none;
+  margin-bottom: 15px;
+  border-bottom: 1px solid var(--nevGrey);
 
-    list-style: none;
-
-    > li {
-      > span {
-        font-weight: 700;
-      }
-      &:nth-child(4) {
-        > li {
-          font-size: 10px;
-        }
-        > span {
-          font-weight: 700;
-          color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')};
-        }
-      }
-    }
+  span {
+    font-weight: 700;
+    color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')};
+  }
+  p {
+    font-weight: 700;
   }
 `;
