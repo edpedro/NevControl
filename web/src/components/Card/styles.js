@@ -23,6 +23,7 @@ export const Header = styled.div`
   }
   > h3 {
     font-size: 16px;
+    font-weight: 500;
   }
 `;
 export const Main = styled.div`
@@ -37,9 +38,10 @@ export const Invoice = styled.div`
 
   > h4 {
     color: var(--secondary);
+    font-weight: 300;
   }
   > p {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 15px;
 
     > span {
@@ -55,9 +57,10 @@ export const Limit = styled.div`
 
   > h4 {
     color: var(--secondary);
+    font-weight: 300;
   }
   > p {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 15px;
 
     > span {

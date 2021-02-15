@@ -4,7 +4,7 @@ function CardExternal() {
   return (
     <Container>
       <Header>
-        <h4>Compra no cartão - pessoas externa</h4>
+        <h4>Cartão - pessoas externa</h4>
       </Header>
       <Grid>
         <GrindItem red>

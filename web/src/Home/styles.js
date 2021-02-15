@@ -52,4 +52,12 @@ export const Grid = styled.div`
 export const GridItem = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1271px) {
+    flex-direction: row;
+    align-items: center;
+  }
+  @media (max-width: 744px) {
+    flex-direction: column;
+  }
 `;

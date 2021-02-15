@@ -2,7 +2,9 @@ import React from 'react';
 
 import logo from '../../assets/logo.svg';
 
-import { Container, MenuLogo, Nav, Button, CircleIcon } from './styles';
+import NavBurger from '../NavBurger';
+
+import { Container, MenuLogo } from './styles';
 
 function Header() {
   return (
@@ -11,18 +13,7 @@ function Header() {
         <img src={logo} alt="nevcontrol" />
         <h1>NevControl</h1>
       </MenuLogo>
-      <Nav>
-        <Button className="active">
-          <span>Dashboard</span>
-        </Button>
-        <Button>
-          <span>Transações</span>
-        </Button>
-        <Button>
-          <span>Cartão</span>
-        </Button>
-      </Nav>
-      <CircleIcon />
+      <NavBurger />
     </Container>
   );
 }

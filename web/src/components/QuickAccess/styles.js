@@ -5,8 +5,9 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 440px;
-  height: 229px;
+  width: 100%;
+  max-width: 350px;
+  height: 200px;
   margin: 30px 10px;
   padding: 10px 40px;
   border-radius: 10px;
@@ -14,6 +15,7 @@ export const Container = styled.div`
 
   h3 {
     font-size: 16px;
+    font-weight: 600;
   }
 `;
 export const Box = styled.div`
@@ -44,6 +46,7 @@ export const Content = styled.div`
 
   h3 {
     font-size: 14px;
+    font-weight: 600;
     margin-top: 8px;
     color: var(--secondary);
   }
