@@ -1,11 +1,10 @@
 import React from 'react';
 
-import Header from '../components/Header';
-import Box from '../components/Box';
-import Card from '../components/Card';
-import Transaction from '../components/Transaction';
-import QuickAccess from '../components/QuickAccess';
-import CardExternal from '../components/CardExternal';
+import Box from '../../components/Box';
+import Card from '../../components/Card';
+import Transaction from '../../components/Transaction';
+import QuickAccess from '../../components/QuickAccess';
+import CardExternal from '../../components/CardExternal';
 
 import {
   Container,
@@ -19,7 +18,6 @@ import {
 function Home() {
   return (
     <Container>
-      <Header />
       <Box />
 
       <GridCard>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Plus } from '../styles/Icons';
+import { Plus } from '../../styles/Icons';
 
 export const Container = styled.div`
   height: 100%;

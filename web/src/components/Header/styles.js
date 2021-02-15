@@ -5,6 +5,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  margin: 0 80px;
   margin-top: 16px;
 `;
 export const MenuLogo = styled.div`
