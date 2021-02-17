@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { ArrowDownCircleFill, MoneyDollarCircle } from '../../styles/Icons';
+import {
+  ArrowDownCircleFill,
+  MoneyDollarCircle,
+  ArrowUpCircleFill,
+} from '../../styles/Icons';
 
 export const Container = styled.div`
   background: var(--white);
@@ -9,32 +13,65 @@ export const Container = styled.div`
   max-width: 700px;
   height: 228px;
   margin: 0 10px;
+  padding: 30px 70px;
 
   @media (max-width: 1283px) {
     width: 526px;
   }
 `;
-export const BoxExit = styled.div`
+export const Recipe = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-
-  margin-top: 30px;
 
   h2 {
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--secondary);
   }
 `;
-export const AmountExit = styled.div`
+export const AmountRecipe = styled.div`
   display: flex;
 
   > p {
     font-size: 12px;
 
     > span {
-      margin-right: 10px;
+      margin-right: 12px;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
+    }
+  }
+`;
+export const UpCircle = styled(ArrowUpCircleFill)`
+  width: 24px;
+  height: 24px;
+  fill: var(--nevGree);
+`;
+export const Expense = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 15px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--secondary);
+  }
+`;
+
+export const AmountExpense = styled.div`
+  display: flex;
+
+  > p {
+    font-size: 12px;
+
+    > span {
+      margin-right: 17px;
+      font-weight: 700;
+      font-size: 18px;
     }
   }
 `;
@@ -45,56 +82,27 @@ export const DownCircle = styled(ArrowDownCircleFill)`
 `;
 export const BoxTotal = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-around;
-
-  margin-top: 15px;
-
-  h2 {
-    font-size: 20px;
-  }
-`;
-
-export const AmountTotal = styled.div`
-  display: flex;
-  > p {
-    font-size: 12px;
-    margin-left: 30px;
-    > span {
-      margin-right: 10px;
-      font-weight: 700;
-      font-size: 20px;
-    }
-  }
+  margin: 50px 0;
+  padding: 20px 0;
+  border-top: 1px solid var(--nevGrey);
 `;
 export const MoneyIcon = styled(MoneyDollarCircle)`
-  width: 29px;
-  height: 29px;
+  width: 32px;
+  height: 32px;
   fill: var(--nevBrack);
 `;
-export const BoxButton = styled.div`
-  padding: 30px 30px;
-`;
-
-export const Button = styled.div`
-  height: 61px;
-  width: 192px;
-  border-radius: 12px;
-  background: var(--nevGree);
-
+export const AmountTotal = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
 
-  transition: 0.2s;
-
-  cursor: pointer;
-  > span {
-    font-size: 18px;
-    color: var(--white);
-    font-weight: 700;
-  }
-  &:hover {
-    background: #057062;
+  > p {
+    font-size: 12px;
+    > span {
+      margin-right: 17px;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--nevGree);
+    }
   }
 `;

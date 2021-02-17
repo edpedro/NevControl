@@ -2,42 +2,47 @@ import React from 'react';
 
 import {
   Container,
-  BoxExit,
-  AmountExit,
+  Recipe,
+  AmountRecipe,
+  UpCircle,
+  Expense,
+  AmountExpense,
   DownCircle,
+  MoneyIcon,
   BoxTotal,
   AmountTotal,
-  MoneyIcon,
-  BoxButton,
-  Button,
 } from './styles';
 
 function Balance() {
   return (
     <Container>
-      <BoxExit>
-        <h2>Saídas</h2>
-        <AmountExit>
+      <Recipe>
+        <h2>Receita realizada</h2>
+        <AmountRecipe>
           <p>
             R$ <span>-700,23</span>
           </p>
-          <DownCircle />
-        </AmountExit>
-      </BoxExit>
-      <BoxTotal>
-        <h2>Total</h2>
-        <AmountTotal>
+          <UpCircle />
+        </AmountRecipe>
+      </Recipe>
+      <Expense>
+        <h2>Despesa realizada</h2>
+        <AmountExpense>
           <p>
             R$<span> 500,10</span>
+          </p>
+          <DownCircle />
+        </AmountExpense>
+      </Expense>
+      <BoxTotal>
+        <h2>Saldo atual</h2>
+        <AmountTotal>
+          <p>
+            R$<span> 300,10</span>
           </p>
           <MoneyIcon />
         </AmountTotal>
       </BoxTotal>
-      <BoxButton>
-        <Button>
-          <span>Historico</span>
-        </Button>
-      </BoxButton>
     </Container>
   );
 }

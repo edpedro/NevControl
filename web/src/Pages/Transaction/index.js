@@ -1,9 +1,15 @@
-import { Container } from './styles';
+import { Container, Grid } from './styles';
+
+import QuickAccess from '../../components/QuickAccess';
+import Balance from '../../components/Balance';
 
 function Transaction() {
   return (
     <Container>
-      <h1>Transação</h1>
+      <Grid>
+        <QuickAccess />
+        <Balance />
+      </Grid>
     </Container>
   );
 }

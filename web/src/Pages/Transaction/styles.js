@@ -11,4 +11,5 @@ export const Container = styled.div`
 `;
 export const Grid = styled.div`
   display: flex;
+  align-items: center;
 `;
