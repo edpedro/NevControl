@@ -10,6 +10,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const Box = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  margin: 20px 0;
+`;
 
 export const GridCard = styled.div`
   display: flex;

@@ -1,13 +1,15 @@
 import React from 'react';
 
-import Box from '../../components/Box';
+import Account from '../../components/Account';
+import Balance from '../../components/Balance';
 import Card from '../../components/Card';
-import Transaction from '../../components/Transaction';
+import BoxTransaction from '../../components/BoxTransaction';
 import QuickAccess from '../../components/QuickAccess';
 import CardExternal from '../../components/CardExternal';
 
 import {
   Container,
+  Box,
   GridCard,
   CardNew,
   IconPlus,
@@ -18,7 +20,10 @@ import {
 function Home() {
   return (
     <Container>
-      <Box />
+      <Box>
+        <Account />
+        <Balance />
+      </Box>
 
       <GridCard>
         <Card />
@@ -29,9 +34,9 @@ function Home() {
       </GridCard>
 
       <Grid>
-        <Transaction />
+        <BoxTransaction />
         <GridItem>
-          <QuickAccess />
+          <QuickAccess wsmall={300} hsmall={200} />
           <CardExternal />
         </GridItem>
       </Grid>

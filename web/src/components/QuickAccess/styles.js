@@ -6,8 +6,8 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
-  max-width: 350px;
-  height: 200px;
+  max-width: ${(props) => (props.wsmall ? `${props.wsmall}px` : '503px')};
+  height: ${(props) => (props.hsmall ? `${props.hsmall}px` : '229px')};
   margin: 30px 10px;
   padding: 10px 40px;
   border-radius: 10px;

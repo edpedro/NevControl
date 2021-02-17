@@ -1,6 +1,6 @@
 import { Container, Header, Grid, GrindItem } from './styles';
 
-function Transaction() {
+function BoxTransaction() {
   return (
     <Container>
       <Header>
@@ -156,4 +156,4 @@ function Transaction() {
   );
 }
 
-export default Transaction;
+export default BoxTransaction;

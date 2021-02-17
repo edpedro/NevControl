@@ -8,9 +8,9 @@ import {
   IconMinus,
 } from './styles';
 
-function QuickAccess() {
+function QuickAccess({ wsmall, hsmall }) {
   return (
-    <Container>
+    <Container wsmall={wsmall} hsmall={hsmall}>
       <h3>Acesso Rápido</h3>
       <Box>
         <Recipe>
