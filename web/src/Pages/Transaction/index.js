@@ -2,14 +2,22 @@ import { Container, Grid } from './styles';
 
 import QuickAccess from '../../components/QuickAccess';
 import Balance from '../../components/Balance';
+import BoxTransaction from '../../components/BoxTransaction';
+import CardExternal from '../../components/CardExternal';
 
 function Transaction() {
   return (
     <Container>
-      <Grid>
+      <header>
         <QuickAccess />
         <Balance />
-      </Grid>
+      </header>
+      <main>
+        <BoxTransaction />
+        <Grid>
+          <CardExternal />
+        </Grid>
+      </main>
     </Container>
   );
 }

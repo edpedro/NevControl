@@ -8,8 +8,15 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
+
+  header {
+    display: flex;
+    align-items: center;
+  }
+  main {
+    display: flex;
+  }
 `;
 export const Grid = styled.div`
-  display: flex;
-  align-items: center;
+  margin-top: 32px;
 `;
