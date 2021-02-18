@@ -15,7 +15,18 @@ export const Box = styled.div`
   flex-wrap: wrap;
 
   margin: 20px 0;
+
+  @media (max-width: 571px) {
+    justify-content: center;
+    align-items: center;
+  }
 `;
 export const Grid = styled.div`
   display: flex;
+
+  @media (max-width: 1275px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
