@@ -18,6 +18,9 @@ export const Container = styled.div`
   @media (max-width: 1283px) {
     width: 526px;
   }
+  @media (max-width: 524px) {
+    padding: 30px 10px;
+  }
 `;
 export const Recipe = styled.div`
   display: flex;

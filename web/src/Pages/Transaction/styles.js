@@ -12,9 +12,19 @@ export const Container = styled.div`
   header {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 1068px) {
+      justify-content: center;
+    }
   }
   main {
     display: flex;
+    flex-wrap: wrap;
+
+    @media (max-width: 1236px) {
+      justify-content: center;
+    }
   }
 `;
 export const Grid = styled.div`
