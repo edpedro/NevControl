@@ -1,10 +1,10 @@
 import { Container, Header, Grid, GrindItem } from './styles';
 
-function BoxTransaction() {
+function BoxTransaction({ title }) {
   return (
     <Container>
       <Header>
-        <h2>Mais recente lançamento</h2>
+        <h2>{title}</h2>
       </Header>
       <Grid>
         <GrindItem red>

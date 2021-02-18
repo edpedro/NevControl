@@ -13,7 +13,7 @@ function Transaction() {
         <Balance />
       </header>
       <main>
-        <BoxTransaction />
+        <BoxTransaction title="Historico Conta" />
         <Grid>
           <CardExternal />
         </Grid>

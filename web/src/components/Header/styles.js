@@ -5,12 +5,13 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  margin: 0 80px;
-  margin-top: 16px;
+  max-width: 1280px;
+  margin: 0 auto;
 `;
 export const MenuLogo = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 20px;
   cursor: pointer;
 
   > img {
