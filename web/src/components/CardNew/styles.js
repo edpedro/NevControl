@@ -12,11 +12,12 @@ export const Container = styled.div`
   border-radius: 10px;
   margin-left: 10px;
   background: var(--nevGrey);
-  transition: 0.2s;
+  transition: 0.3s;
   cursor: pointer;
 
   &:hover {
     background: var(--primary);
+    border: 1px solid var(--nevGrey);
   }
 `;
 

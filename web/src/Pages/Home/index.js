@@ -27,7 +27,7 @@ function Home() {
       <Grid>
         <BoxTransaction title="Mais recente lançamento" />
         <GridItem>
-          <QuickAccess wsmall={300} hsmall={200} />
+          <QuickAccess wsmall={400} hsmall={200} />
           <CardExternal />
         </GridItem>
       </Grid>

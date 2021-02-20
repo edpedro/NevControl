@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   /* width: 440px; */
   height: 200px;
   margin: 0px 10px;
@@ -49,8 +49,12 @@ export const GrindItem = styled.ul`
   margin-bottom: 15px;
   border-bottom: 1px solid var(--nevGrey);
 
+  li {
+    font-size: 15px;
+  }
+
   span {
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 700;
     color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')};
   }
