@@ -93,7 +93,7 @@ function ModalTransaction({ isOpen, onChange }) {
                 <option value="pessoaExterna">Pessoa externa</option>
               </Select>
             </GridType>
-            <Button />
+            <Button title="Adicionar" />
           </form>
         </Grid>
       </Modal>

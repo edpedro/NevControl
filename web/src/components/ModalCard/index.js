@@ -76,7 +76,7 @@ function ModalCard({ isOpen, onChange }) {
                 <option value="santander">Santander</option>
               </Select>
             </GridInstitution>
-            <Button />
+            <Button title="Adicionar" />
           </form>
         </Grid>
       </Modal>

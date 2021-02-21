@@ -1,9 +1,9 @@
 import { Container } from './styles.js';
 
-function Button() {
+function Button({ title }) {
   return (
     <Container>
-      <button>Adicionar</button>
+      <button>{title}</button>
     </Container>
   );
 }

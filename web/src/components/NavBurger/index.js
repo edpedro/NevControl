@@ -33,7 +33,9 @@ function NavBurger() {
             <span>Cartão</span>
           </Button>
         </Link>
-        <CircleIcon />
+        <Link to="/login" style={{ textDecoration: 'none' }}>
+          <CircleIcon />
+        </Link>
       </Nav>
     </Container>
   );
