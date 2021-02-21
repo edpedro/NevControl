@@ -1,4 +1,4 @@
-## PROJETO - CONTROLE FINANCEIOR PESSOAL
+## PROJETO - CONTROLE FINANCEIRO PESSOAL
 
 ## Bank-end em desenvolvimento...
 
