@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 
+import { useLocation, Link } from 'react-router-dom';
+
 import { Container, StyledBurger, Nav, Button, CircleIcon } from './styles';
 
 function NavBurger() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  console.log(location.pathname);
 
   return (
     <Container>
@@ -13,15 +18,21 @@ function NavBurger() {
         <div />
       </StyledBurger>
       <Nav open={open}>
-        <Button className="active">
-          <span>Dashboard</span>
-        </Button>
-        <Button>
-          <span>Transações</span>
-        </Button>
-        <Button>
-          <span>Cartão</span>
-        </Button>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Button className={location.pathname === '/' && 'active'}>
+            <span>Dashboard</span>
+          </Button>
+        </Link>
+        <Link to="/transacao" style={{ textDecoration: 'none' }}>
+          <Button className={location.pathname === '/transacao' && 'active'}>
+            <span>Transações</span>
+          </Button>
+        </Link>
+        <Link to="/cartao" style={{ textDecoration: 'none' }}>
+          <Button className={location.pathname === '/cartao' && 'active'}>
+            <span>Cartão</span>
+          </Button>
+        </Link>
         <CircleIcon />
       </Nav>
     </Container>
