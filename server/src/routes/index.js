@@ -2,8 +2,8 @@ const express = require("express");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send({ message: "Controle de finança pessoal" });
-});
+const UserController = require("../controllers/UserController");
+
+router.post("/register", UserController.create);
 
 module.exports = router;
