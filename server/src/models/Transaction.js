@@ -11,6 +11,11 @@ const userSchema = new Schema(
     type: { type: String, require: true },
     operation: { type: String, require: true },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User", require: true },
+    card: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CreditCard",
+      require: true,
+    },
   },
   {
     timestamps: true,
