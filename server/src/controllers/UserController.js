@@ -21,7 +21,7 @@ module.exports = {
         .status(201)
         .json({ message: "Usuario cadastrado com sucesso", user, token });
     } catch (error) {
-      throw new Error({ error: "Falha no cadastro" });
+      return res.status(400).json({ error: "Falha no cadastro" });
     }
   },
 
