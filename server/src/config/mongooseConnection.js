@@ -3,6 +3,8 @@ const database = require("./db.config");
 
 mongoose.Promise = global.Promise;
 
+mongoose.set("useFindAndModify", false);
+
 mongoose
   .connect(database.local.localUrlDatabase, {
     useNewUrlParser: true,
