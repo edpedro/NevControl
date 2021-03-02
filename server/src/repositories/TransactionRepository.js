@@ -27,7 +27,7 @@ module.exports = {
     return transaction;
   },
   async getBalance(userId) {
-    var transaction = await Transaction.find({ user: userId }).exec();
+    const transaction = await Transaction.find({ user: userId }).exec();
 
     const {
       accountBalance,
@@ -39,7 +39,6 @@ module.exports = {
         switch (curret.type) {
           case "receita":
             acc.accountBalance += curret.value;
-            break;
           case "despesa":
             if (curret.operation === "conta") {
               acc.negativeBalance += curret.value;
@@ -76,5 +75,37 @@ module.exports = {
       balanceExternalPerson,
       transaction,
     };
+  },
+  async updateTransaction(
+    id,
+    type,
+    description,
+    value,
+    data,
+    category,
+    accountCard,
+    operation
+  ) {
+    const transaction = await Transaction.findById(id).exec();
+
+    if (!transaction) {
+      return { error: "Transação não encontrado!" };
+    }
+
+    const update = await Transaction.findByIdAndUpdate(
+      id,
+      {
+        id,
+        type,
+        description,
+        value,
+        data,
+        category,
+        accountCard,
+        operation,
+      },
+      { new: true }
+    );
+    return update;
   },
 };

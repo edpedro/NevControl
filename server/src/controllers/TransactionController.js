@@ -34,4 +34,35 @@ module.exports = {
       return res.status(400).json({ error: "Falha no cadastro de transação" });
     }
   },
+  async update(req, res) {
+    const { id } = req.params;
+
+    const {
+      type,
+      description,
+      value,
+      data,
+      category,
+      accountCard,
+      operation,
+    } = req.body;
+
+    try {
+      const transaction = await Transactions.updateTransaction(
+        id,
+        type,
+        description,
+        value,
+        data,
+        category,
+        accountCard,
+        operation
+      );
+      return res.status(201).json({ transaction });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ error: "Falha na atualização da transação" });
+    }
+  },
 };
