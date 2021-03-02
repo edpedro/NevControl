@@ -12,5 +12,6 @@ router.post("/login", UserController.login);
 router.post("/transacao", auth, TransactionController.create);
 router.get("/transacao", auth, TransactionController.index);
 router.put("/transacao/:id", auth, TransactionController.update);
+router.delete("/transacao/:id", auth, TransactionController.delete);
 
 module.exports = router;

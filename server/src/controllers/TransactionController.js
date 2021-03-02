@@ -65,4 +65,16 @@ module.exports = {
         .json({ error: "Falha na atualização da transação" });
     }
   },
+  async delete(req, res) {
+    const { id } = req.params;
+    try {
+      await Transactions.deleteTransaction(id);
+
+      return res
+        .status(200)
+        .json({ message: "Transação deletada com sucesso!" });
+    } catch (error) {
+      return res.status(400).json({ error: "Falha na deleção da transação" });
+    }
+  },
 };

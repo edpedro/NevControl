@@ -108,4 +108,15 @@ module.exports = {
     );
     return update;
   },
+  async deleteTransaction(id) {
+    const transaction = await Transaction.findById(id).exec();
+
+    if (!transaction) {
+      return { error: "Transação não encontrado!" };
+    }
+
+    const restul = await Transaction.findOneAndRemove({ _id: id });
+
+    return restul;
+  },
 };
