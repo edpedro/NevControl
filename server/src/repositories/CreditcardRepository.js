@@ -26,4 +26,24 @@ module.exports = {
 
     return creditCard;
   },
+  async updateCreditCard(name, limit, close, win, bank, id) {
+    const creditCard = await CreditCard.findById(id).exec();
+
+    if (!creditCard) {
+      return { error: "Cartão de credito não encontrado!" };
+    }
+
+    const update = await CreditCard.findByIdAndUpdate(
+      id,
+      {
+        name,
+        limit,
+        close,
+        win,
+        bank,
+      },
+      { new: true }
+    );
+    return update;
+  },
 };

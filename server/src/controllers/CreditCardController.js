@@ -24,4 +24,25 @@ module.exports = {
       return res.status(400).json({ error: "Falha no cadastro de transação" });
     }
   },
+  async update(req, res) {
+    const { id } = req.params;
+
+    const { name, limit, close, win, bank } = req.body;
+
+    try {
+      const creditCard = await creditCardRepository.updateCreditCard(
+        name,
+        limit,
+        close,
+        win,
+        bank,
+        id
+      );
+      return res.status(201).json({ creditCard });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ error: "Falha na atualização do cartão de credito" });
+    }
+  },
 };
