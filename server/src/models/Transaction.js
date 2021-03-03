@@ -23,6 +23,6 @@ const userSchema = new Schema(
   }
 );
 
-const User = mongoose.model("Transaction", userSchema);
+const Transaction = mongoose.model("Transaction", userSchema);
 
-module.exports = User;
+module.exports = Transaction;

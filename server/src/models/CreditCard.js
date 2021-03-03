@@ -17,6 +17,6 @@ const userSchema = new Schema(
   }
 );
 
-const User = mongoose.model("CreditCard", userSchema);
+const CreditCard = mongoose.model("CreditCard", userSchema);
 
-module.exports = User;
+module.exports = CreditCard;
