@@ -21,4 +21,9 @@ module.exports = {
 
     return creditCard;
   },
+  async getCreditCard(userId) {
+    const creditCard = await CreditCard.find({ user: userId }).exec();
+
+    return creditCard;
+  },
 };

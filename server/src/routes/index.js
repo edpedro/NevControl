@@ -16,5 +16,6 @@ router.put("/transacao/:id", auth, TransactionController.update);
 router.delete("/transacao/:id", auth, TransactionController.delete);
 
 router.post("/creditcard", auth, CreditCard.create);
+router.get("/creditcard", auth, CreditCard.index);
 
 module.exports = router;
