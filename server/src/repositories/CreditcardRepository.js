@@ -46,4 +46,15 @@ module.exports = {
     );
     return update;
   },
+  async deleteCreditCard(id) {
+    const creditCard = await CreditCard.findById(id).exec();
+
+    if (!creditCard) {
+      return { error: "Cartão de credito não encontrado!" };
+    }
+
+    const restul = await CreditCard.findOneAndRemove({ _id: id });
+
+    return restul;
+  },
 };

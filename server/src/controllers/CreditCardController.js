@@ -45,4 +45,18 @@ module.exports = {
         .json({ error: "Falha na atualização do cartão de credito" });
     }
   },
+  async delete(req, res) {
+    const { id } = req.params;
+    try {
+      await creditCardRepository.deleteCreditCard(id);
+
+      return res
+        .status(200)
+        .json({ message: "Cartão de credito deletada com sucesso!" });
+    } catch (error) {
+      return res
+        .status(400)
+        .json({ error: "Falha na deleção do cartão de credito" });
+    }
+  },
 };
