@@ -1,10 +1,22 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import api from '../../services/api';
 import history from '../../services/history';
 
 function useAuth() {
-  const [autheticated, setAutheticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
   const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+      setAuthenticated(true);
+    }
+
+    setLoading(false);
+  }, []);
 
   const handleLogin = useCallback(async (useData) => {
     try {
@@ -14,7 +26,7 @@ function useAuth() {
 
       localStorage.setItem('token', JSON.stringify(token));
       api.defaults.headers.Authorization = `Bearer ${token}`;
-      setAutheticated(true);
+      setAuthenticated(true);
       setUser(name);
       history.push('/');
     } catch (error) {
@@ -30,7 +42,7 @@ function useAuth() {
 
       localStorage.setItem('token', JSON.stringify(token));
       api.defaults.headers.Authorization = `Bearer ${token}`;
-      setAutheticated(true);
+      setAuthenticated(true);
       setUser(name);
       history.push('/');
     } catch (error) {
@@ -38,7 +50,7 @@ function useAuth() {
     }
   }, []);
 
-  return { handleLogin, handleRegister, user, autheticated };
+  return { handleLogin, handleRegister, user, authenticated, loading };
 }
 
 export default useAuth;
