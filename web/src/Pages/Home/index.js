@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Account from '../../components/Account';
 import Balance from '../../components/Balance';
 import Card from '../../components/Card';

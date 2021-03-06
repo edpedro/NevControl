@@ -9,10 +9,12 @@ function useAuth() {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const name = localStorage.getItem('user');
 
     if (token) {
       api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
       setAuthenticated(true);
+      setUser(name);
     }
 
     setLoading(false);
@@ -21,10 +23,14 @@ function useAuth() {
   const handleLogin = useCallback(async (useData) => {
     try {
       const {
-        data: { name, token },
+        data: {
+          user: { name },
+          token,
+        },
       } = await api.post('/login', useData);
 
       localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('user', name);
       api.defaults.headers.Authorization = `Bearer ${token}`;
       setAuthenticated(true);
       setUser(name);
@@ -37,10 +43,14 @@ function useAuth() {
   const handleRegister = useCallback(async (useData) => {
     try {
       const {
-        data: { name, token },
+        data: {
+          user: { name },
+          token,
+        },
       } = await api.post('/register', useData);
 
       localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('user', name);
       api.defaults.headers.Authorization = `Bearer ${token}`;
       setAuthenticated(true);
       setUser(name);

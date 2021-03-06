@@ -8,8 +8,6 @@ function NavBurger() {
   const [open, setOpen] = useState(false);
   const location = useLocation();
 
-  console.log(location.pathname);
-
   return (
     <Container>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
