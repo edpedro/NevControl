@@ -37,10 +37,13 @@ userSchema.methods.generateAuthToken = async function () {
 };
 
 userSchema.statics.findByCredentials = async (email, password) => {
+  if (!email || !password) {
+    throw new Error("favor preencher todos dados!");
+  }
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error("Usuario não encontrado!");
+    throw new Error("email não encontrado!");
   }
   const isPasswordMatch = await bcrypt.compare(password, user.password);
   if (!isPasswordMatch) {

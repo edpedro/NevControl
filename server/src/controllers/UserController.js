@@ -5,6 +5,10 @@ module.exports = {
     const { name, email, password } = req.body;
 
     try {
+      if (!name || !email || !password) {
+        return res.status(401).json({ message: "favor preencher todos dados" });
+      }
+
       const checkEmail = await User.find({ email });
 
       if (checkEmail.length >= 1) {
@@ -21,7 +25,7 @@ module.exports = {
         .status(201)
         .json({ message: "Usuario cadastrado com sucesso", user, token });
     } catch (error) {
-      return res.status(400).json({ error: "Falha no cadastro" });
+      return res.status(400).json(err);
     }
   },
 
