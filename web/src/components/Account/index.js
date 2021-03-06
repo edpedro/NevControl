@@ -5,7 +5,7 @@ import { Context } from '../../Context/Context';
 import { Container, Header, UpArrowCircle, Main } from './styles';
 
 function Account() {
-  const { user } = useContext(Context);
+  const { user, balance } = useContext(Context);
 
   function checkHours() {
     const result = new Date();
@@ -33,7 +33,7 @@ function Account() {
           {checkHours()}, {user[0].toUpperCase() + user.slice(1).toLowerCase()}
         </h2>
         <p>
-          R$ <span>1.500,00</span>
+          R$ <span>{balance.accountBalance}</span>
         </p>
         <h4>Saldo geral</h4>
       </Main>
