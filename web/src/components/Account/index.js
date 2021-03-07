@@ -2,6 +2,9 @@ import React, { useContext } from 'react';
 
 import { Context } from '../../Context/Context';
 
+import FormatCurrency from '../../utils/FormatCurrency';
+import FormatUppercase from '../../utils/FormatUppercase';
+
 import { Container, Header, UpArrowCircle, Main } from './styles';
 
 function Account() {
@@ -30,10 +33,15 @@ function Account() {
       </Header>
       <Main>
         <h2>
-          {checkHours()}, {user[0].toUpperCase() + user.slice(1).toLowerCase()}
+          {checkHours()}, {FormatUppercase(user)}
         </h2>
         <p>
-          R$ <span>{balance.accountBalance}</span>
+          R${' '}
+          <span>
+            {FormatCurrency(
+              balance.accountBalance ? balance.accountBalance : 0
+            )}
+          </span>
         </p>
         <h4>Saldo geral</h4>
       </Main>
