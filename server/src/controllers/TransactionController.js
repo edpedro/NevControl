@@ -2,9 +2,9 @@ const Transactions = require("../repositories/TransactionRepository");
 
 module.exports = {
   async index(req, res) {
-    const balance = await Transactions.getBalance(req.userData._id);
+    const data = await Transactions.getBalance(req.userData._id);
 
-    return res.status(200).json({ balance });
+    return res.status(200).json(data);
   },
   async create(req, res) {
     const {

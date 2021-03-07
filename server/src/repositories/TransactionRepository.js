@@ -68,12 +68,14 @@ module.exports = {
     );
     const currentBalance = accountBalance - negativeBalance;
     return {
-      accountBalance,
-      negativeBalance,
-      currentBalance,
-      cardBalance,
-      balanceExternalPerson,
-      transaction,
+      balance: {
+        accountBalance,
+        negativeBalance,
+        currentBalance,
+        cardBalance,
+        balanceExternalPerson,
+      },
+      data: transaction,
     };
   },
   async updateTransaction(

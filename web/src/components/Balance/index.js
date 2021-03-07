@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+
+import { Context } from '../../Context/Context';
+
+import FormatCurrency from '../../utils/FormatCurrency';
 
 import {
   Container,
@@ -14,13 +18,20 @@ import {
 } from './styles';
 
 function Balance() {
+  const { balance } = useContext(Context);
   return (
     <Container>
       <Recipe>
         <h2>Receita realizada</h2>
         <AmountRecipe>
           <p>
-            R$ <span>-700,23</span>
+            R${' '}
+            <span>
+              {' '}
+              {FormatCurrency(
+                balance.accountBalance ? balance.accountBalance : 0
+              )}
+            </span>
           </p>
           <UpCircle />
         </AmountRecipe>
@@ -29,7 +40,14 @@ function Balance() {
         <h2>Despesa realizada</h2>
         <AmountExpense>
           <p>
-            R$<span> 500,10</span>
+            R$
+            <span className="red">
+              {' '}
+              -
+              {FormatCurrency(
+                balance.negativeBalance ? balance.negativeBalance : 0
+              )}
+            </span>
           </p>
           <DownCircle />
         </AmountExpense>
@@ -38,7 +56,13 @@ function Balance() {
         <h2>Saldo atual</h2>
         <AmountTotal>
           <p>
-            R$<span> 300,10</span>
+            R$
+            <span>
+              {' '}
+              {FormatCurrency(
+                balance.currentBalance ? balance.currentBalance : 0
+              )}
+            </span>
           </p>
           <MoneyIcon />
         </AmountTotal>

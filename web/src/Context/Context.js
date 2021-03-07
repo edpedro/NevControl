@@ -13,7 +13,7 @@ function Provider({ children }) {
     authenticated,
     loading,
   } = useAuth();
-  const { balance } = TransactionContext();
+  const { balance, transactions } = TransactionContext();
 
   return (
     <Context.Provider
@@ -24,6 +24,7 @@ function Provider({ children }) {
         authenticated,
         loading,
         balance,
+        transactions,
       }}
     >
       {children}

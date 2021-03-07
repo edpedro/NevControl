@@ -75,6 +75,10 @@ export const AmountExpense = styled.div`
       margin-right: 17px;
       font-weight: 700;
       font-size: 18px;
+
+      &.red {
+        color: var(--nevRed);
+      }
     }
   }
 `;
