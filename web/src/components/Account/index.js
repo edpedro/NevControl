@@ -36,12 +36,7 @@ function Account() {
           {checkHours()}, {FormatUppercase(user)}
         </h2>
         <p>
-          R${' '}
-          <span>
-            {FormatCurrency(
-              balance.accountBalance ? balance.accountBalance : 0
-            )}
-          </span>
+          R$ <span>{balance && FormatCurrency(balance.accountBalance)}</span>
         </p>
         <h4>Saldo geral</h4>
       </Main>

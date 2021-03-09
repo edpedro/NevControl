@@ -27,7 +27,9 @@ module.exports = {
     return transaction;
   },
   async getBalance(userId) {
-    const transaction = await Transaction.find({ user: userId }).exec();
+    const transaction = await Transaction.find({ user: userId })
+      .populate({ path: "user", select: "name" })
+      .exec();
 
     const {
       accountBalance,

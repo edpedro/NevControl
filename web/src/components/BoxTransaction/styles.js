@@ -24,6 +24,10 @@ export const Grid = styled.div`
 
   overflow: auto;
 
+  h1 {
+    text-align: center;
+  }
+
   ::-webkit-scrollbar-track {
     background-color: #f4f4f4;
   }
@@ -49,7 +53,13 @@ export const GrindItem = styled.ul`
 
   span {
     font-weight: 700;
-    color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')};
+    color: var(--nevGree);
+    /* color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')}; */
+  }
+  &.active {
+    span {
+      color: var(--nevRed);
+    }
   }
   p {
     font-weight: 700;

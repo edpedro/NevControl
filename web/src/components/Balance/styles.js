@@ -15,6 +15,10 @@ export const Container = styled.div`
   margin: 0 10px;
   padding: 30px 70px;
 
+  h2 {
+    text-align: center;
+  }
+
   @media (max-width: 1283px) {
     width: 526px;
   }
@@ -110,6 +114,9 @@ export const AmountTotal = styled.div`
       font-weight: 700;
       font-size: 22px;
       color: var(--nevGree);
+      &.red {
+        color: var(--nevRed);
+      }
     }
   }
 `;

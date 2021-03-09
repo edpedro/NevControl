@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import api from '../../services/api';
 
 function TransactionContext() {
-  const [balance, setBalance] = useState({});
-  const [transactions, setTransactions] = useState({});
+  const [balance, setBalance] = useState();
+  const [transactions, setTransactions] = useState();
 
   useEffect(() => {
     const token = localStorage.getItem('token');
