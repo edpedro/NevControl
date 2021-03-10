@@ -39,27 +39,44 @@ export const Grid = styled.div`
     height: 4px;
   }
 `;
-export const GrindItem = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
 
-  list-style: none;
-  margin-bottom: 15px;
-  border-bottom: 1px solid var(--nevGrey);
+export const Table = styled.table`
+  border-collapse: collapse;
+  width: 100%;
+`;
 
-  li {
-    font-size: 15px;
-  }
+export const Tbody = styled.tbody`
+  tr,
+  td {
+    padding-left: 6px;
 
-  span {
-    font-size: 15px;
+    border-bottom: 1px solid var(--nevGrey);
     font-weight: 700;
-    color: ${(props) => (props.red ? 'var(--nevRed)' : 'var(--nevGree)')};
+    font-size: 15px;
+
+    &:nth-child(2) {
+      font-weight: 500;
+    }
+    &:nth-child(3) {
+      font-weight: 600;
+    }
+    &:nth-child(4) {
+      color: var(--nevGree);
+    }
+
+    &.active {
+      /* background: var(--nevRed); */
+      td {
+        &:nth-child(4) {
+          color: var(--nevRed);
+        }
+      }
+    }
   }
-  p {
-    font-size: 13px;
-    font-weight: 700;
+  @media (max-width: 670px) {
+    tr,
+    td {
+      padding: 6px;
+    }
   }
 `;
