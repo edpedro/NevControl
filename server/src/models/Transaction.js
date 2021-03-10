@@ -14,7 +14,6 @@ const userSchema = new Schema(
     accountCard: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "CreditCard",
-      require: true,
     },
   },
   {

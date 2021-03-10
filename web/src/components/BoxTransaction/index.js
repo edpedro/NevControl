@@ -18,9 +18,9 @@ function BoxTransaction({ title }) {
       </Header>
       <Grid>
         <Table>
-          <Tbody>
-            {transactions && transactions.length > 0 ? (
-              transactions.map((transaction, key) => (
+          {transactions && transactions.length > 0 ? (
+            transactions.map((transaction, key) => (
+              <Tbody key={key}>
                 <tr className={transaction.type === 'despesa' ? 'active' : ''}>
                   <td>{FormatDate(transaction.data)}</td>
                   <td>{FormatUppercase(transaction.description)}</td>
@@ -32,11 +32,17 @@ function BoxTransaction({ title }) {
                       : '+' + FormatCurrency(transaction.value)}
                   </td>
                 </tr>
-              ))
-            ) : (
-              <h1>Sem lançamentos</h1>
-            )}
-          </Tbody>
+              </Tbody>
+            ))
+          ) : (
+            <Tbody>
+              <tr>
+                <td>
+                  <p className="notTran">Sem lançamentos</p>
+                </td>
+              </tr>
+            </Tbody>
+          )}
         </Table>
       </Grid>
     </Container>

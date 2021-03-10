@@ -5,6 +5,7 @@ export const Grid = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: ${(props) => (props.option === 'receita' ? '60px' : '40px')};
 
   h2 {
     font-size: 30px;
@@ -14,7 +15,7 @@ export const Grid = styled.div`
 export const Input = styled.input`
   width: ${(props) => (props.width ? `${props.width}px` : '490px')};
   height: 6px;
-  padding: 25px;
+  padding: 20px;
   margin-top: 4px;
   border: 1px solid var(--nevGrey);
   border-radius: 10px;
@@ -39,7 +40,7 @@ export const Label = styled.label`
   }
 `;
 export const GridDescription = styled.div`
-  margin-top: 40px;
+  margin-top: 20px;
 
   width: 100%;
   max-width: 500px;
@@ -87,7 +88,7 @@ export const GridCategoryAccountCard = styled.div`
 `;
 export const Select = styled.select`
   width: ${(props) => (props.width ? `${props.width}px` : '240px')};
-  padding: 16px 16px 14px 16px;
+  padding: 16px 16px 4px 16px;
   border: 1px solid var(--nevGrey);
   border-radius: 10px;
   font-size: 16px;
@@ -108,7 +109,6 @@ export const Select = styled.select`
 
 export const GridType = styled.div`
   margin-top: 16px;
-  margin-bottom: 16px;
 
   width: 100%;
   max-width: 500px;

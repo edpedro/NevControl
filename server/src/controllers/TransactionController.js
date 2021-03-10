@@ -21,7 +21,7 @@ module.exports = {
       const transaction = await Transactions.createTransactions(
         type,
         description,
-        value,
+        parseInt(value),
         data,
         category,
         operation,
@@ -30,8 +30,10 @@ module.exports = {
       );
 
       return res.status(201).json({ transaction });
-    } catch (error) {
-      return res.status(400).json({ error: "Falha no cadastro de transação" });
+    } catch (err) {
+      return res
+        .status(400)
+        .json(err, { error: "Falha no cadastro de transação" });
     }
   },
   async update(req, res) {

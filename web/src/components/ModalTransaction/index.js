@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
+
+import { Context } from '../../Context/Context';
 
 import {
   Grid,
@@ -31,9 +33,30 @@ const customStyles = {
   },
 };
 
-function ModalTransaction({ isOpen, onChange }) {
+function ModalTransaction({ isOpen, onChange, option }) {
+  const { handleCreateTransaction } = useContext(Context);
+
+  const [data, setData] = useState({
+    type: option,
+    description: '',
+    value: '',
+    data: '',
+    category: '',
+    operation: '',
+    accountCard: null,
+  });
+
   function closeModal() {
     onChange(false);
+  }
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setData((data) => ({ ...data, [name]: value }));
+  }
+  async function handleSubmint(event) {
+    event.preventDefault();
+
+    handleCreateTransaction(data);
   }
 
   return (
@@ -44,29 +67,46 @@ function ModalTransaction({ isOpen, onChange }) {
         style={customStyles}
         contentLabel="Modal Transaction"
       >
-        {/* <button onClick={closeModal}>close</button> */}
-        <Grid>
-          <h2>Nova receita</h2>
-          <form>
+        <Grid option={option}>
+          <h2>Nova {option}</h2>
+          <form onSubmit={handleSubmint}>
             <GridDescription>
               <Label htmlFor="description">Descrição</Label>
-              <Input type="text" id="description" name="description" />
+              <Input
+                type="text"
+                id="description"
+                name="description"
+                onChange={handleChange}
+              />
             </GridDescription>
             <GridValueDate>
               <div>
                 <Label htmlFor="value">Valor</Label>
-                <Input type="number" id="value" name="value" width={240} />
+                <Input
+                  type="number"
+                  id="number"
+                  name="value"
+                  width={240}
+                  onChange={handleChange}
+                />
               </div>
               <div>
                 <Label htmlFor="date">Data</Label>
-                <Input type="date" id="date" name="date" width={240} />
+                <Input
+                  type="date"
+                  id="date"
+                  name="data"
+                  width={240}
+                  onChange={handleChange}
+                />
               </div>
             </GridValueDate>
             <GridCategoryAccountCard>
               <div>
                 <Label>
                   Conta/cartão
-                  <Select>
+                  <Select name="operation" onChange={handleChange}>
+                    <option value=""></option>
                     <option value="conta">Conta</option>
                     <option value="cartao">Cartão</option>
                   </Select>
@@ -75,7 +115,7 @@ function ModalTransaction({ isOpen, onChange }) {
               <div>
                 <Label>
                   Categoria
-                  <Select>
+                  <Select name="category" onChange={handleChange}>
                     <option value=""></option>
                     <option value="alimentação">Alimentação</option>
                     <option value="saab">Saab</option>
@@ -85,14 +125,21 @@ function ModalTransaction({ isOpen, onChange }) {
                 </Label>
               </div>
             </GridCategoryAccountCard>
-            <GridType>
-              <Label htmlFor="type">Tipo</Label>
-              <Select name="type" id="type" width={490}>
-                <option value=""></option>
-                <option value="donoConta">Dono conta</option>
-                <option value="pessoaExterna">Pessoa externa</option>
-              </Select>
-            </GridType>
+            {data.operation === 'cartao' && (
+              <GridType>
+                <Label htmlFor="accountCard">Bandeira</Label>
+                <Select
+                  name="accountCard"
+                  id="accountCard"
+                  width={490}
+                  onChange={handleChange}
+                >
+                  <option value=""></option>
+                  <option value="asdasd321651">Santander</option>
+                  <option value="asdasd321651">Itau</option>
+                </Select>
+              </GridType>
+            )}
             <Button title="Adicionar" />
           </form>
         </Grid>

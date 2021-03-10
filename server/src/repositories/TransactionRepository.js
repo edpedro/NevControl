@@ -11,6 +11,16 @@ module.exports = {
     userId,
     accountCard
   ) {
+    console.log(
+      type,
+      description,
+      value,
+      data,
+      category,
+      operation,
+      userId,
+      accountCard
+    );
     const newTransaction = new Transaction({
       description,
       value,

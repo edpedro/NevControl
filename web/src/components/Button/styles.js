@@ -6,12 +6,13 @@ export const Container = styled.div`
 
   button {
     width: 490px;
-    height: 57px;
+    height: 52px;
     background: var(--nevGree);
     border-radius: 12px;
     font-size: 30px;
     font-weight: 700;
     color: var(--white);
+    margin-top: 35px;
     cursor: pointer;
     transition: 0.2s;
 

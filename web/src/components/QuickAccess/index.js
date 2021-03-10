@@ -13,19 +13,26 @@ import ModalTransaction from '../ModalTransaction';
 
 function QuickAccess({ wsmall, hsmall }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [option, setOpen] = useState('');
+
+  function handleIsOpen(option) {
+    setOpen(option);
+    setIsOpen(!isOpen);
+  }
+
   return (
     <>
       <Container wsmall={wsmall} hsmall={hsmall}>
         <h3>Acesso Rápido</h3>
         <Box>
           <Recipe>
-            <Content onClick={() => setIsOpen(!isOpen)}>
+            <Content onClick={() => handleIsOpen('receita')}>
               <IconPlus />
               <h3>RECEITA</h3>
             </Content>
           </Recipe>
           <Expense>
-            <Content>
+            <Content onClick={() => handleIsOpen('despesa')}>
               <IconMinus />
               <h3>DESPESA</h3>
             </Content>
@@ -34,6 +41,7 @@ function QuickAccess({ wsmall, hsmall }) {
       </Container>
       {isOpen && (
         <ModalTransaction
+          option={option}
           isOpen={isOpen}
           onChange={(isOpen) => setIsOpen(isOpen)}
         />

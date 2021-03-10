@@ -18,9 +18,9 @@ function CardExternal() {
       </Header>
       <Grid>
         <Table>
-          <Tbody>
-            {transactions && transactions.length > 0 ? (
-              transactions.map((transaction, key) => (
+          {transactions && transactions.length > 0 ? (
+            transactions.map((transaction, key) => (
+              <Tbody key={key}>
                 <tr className={transaction.type === 'despesa' ? 'active' : ''}>
                   {transaction.operation === 'cartaoPessoaExterna' && (
                     <>
@@ -36,11 +36,17 @@ function CardExternal() {
                     </>
                   )}
                 </tr>
-              ))
-            ) : (
-              <h1>Sem lançamentos</h1>
-            )}
-          </Tbody>
+              </Tbody>
+            ))
+          ) : (
+            <Tbody>
+              <tr>
+                <td>
+                  <p className="notTran">Sem lançamentos</p>
+                </td>
+              </tr>
+            </Tbody>
+          )}
         </Table>
       </Grid>
     </Container>
