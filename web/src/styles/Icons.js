@@ -4,5 +4,9 @@ export {
   ArrowDownCircleFill,
   Plus,
 } from 'styled-icons/bootstrap';
-export { MoneyDollarCircle } from 'styled-icons/remix-fill';
+export {
+  MoneyDollarCircle,
+  EditCircle,
+  DeleteBack2,
+} from 'styled-icons/remix-fill';
 export { MinusSm } from 'styled-icons/heroicons-solid';

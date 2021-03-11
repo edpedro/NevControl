@@ -6,10 +6,22 @@ import FormatCurrency from '../../utils/FormatCurrency';
 import FormatUppercase from '../../utils/FormatUppercase';
 import FormatDate from '../../utils/FormatDate';
 
-import { Container, Header, Grid, Table, Tbody } from './styles';
+import {
+  Container,
+  Header,
+  Grid,
+  Table,
+  Tbody,
+  IconEdit,
+  IconDelet,
+} from './styles';
 
 function BoxTransaction({ title, validation }) {
-  const { transactions } = useContext(Context);
+  const { transactions, handleEditTransaction } = useContext(Context);
+
+  function handleEdit(id) {
+    handleEditTransaction(id);
+  }
 
   return (
     <Container>
@@ -26,7 +38,7 @@ function BoxTransaction({ title, validation }) {
                     ? transaction.operation === 'conta' && (
                         <>
                           <td>{FormatDate(transaction.data)}</td>
-                          <td>{FormatUppercase(transaction.description)}</td>
+                          <td>{FormatUppercase(transaction.operation)}</td>
                           <td>{transaction.category}</td>
                           <td>
                             R${' '}
@@ -34,18 +46,34 @@ function BoxTransaction({ title, validation }) {
                               ? '-' + FormatCurrency(transaction.value)
                               : '+' + FormatCurrency(transaction.value)}
                           </td>
+                          <td>
+                            <IconEdit /> -{' '}
+                            <IconDelet
+                              onClick={() => {
+                                handleEdit(transaction._id);
+                              }}
+                            />
+                          </td>
                         </>
                       )
                     : transaction.operation === 'cartao' && (
                         <>
                           <td>{FormatDate(transaction.data)}</td>
-                          <td>{FormatUppercase(transaction.description)}</td>
+                          <td>{FormatUppercase(transaction.operation)}</td>
                           <td>{transaction.category}</td>
                           <td>
                             R${' '}
                             {transaction.type === 'despesa'
                               ? '-' + FormatCurrency(transaction.value)
                               : '+' + FormatCurrency(transaction.value)}
+                          </td>
+                          <td>
+                            <IconEdit /> -{' '}
+                            <IconDelet
+                              onClick={() => {
+                                handleEdit(transaction._id);
+                              }}
+                            />
                           </td>
                         </>
                       )}

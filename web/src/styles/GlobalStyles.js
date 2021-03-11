@@ -29,6 +29,7 @@ export default createGlobalStyle`
     --white_1: #f2f2f2;
     --nevBrack: #000;
     --nevRed: #EC1C24;
-    --nevGrey: #DBDDE6;  
+    --nevGrey: #DBDDE6;
+    --nevOrange: #ff8c00 ;  
   }
 `;

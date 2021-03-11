@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { EditCircle, DeleteBack2 } from '../../styles/Icons';
 
 export const Container = styled.div`
   display: flex;
@@ -82,10 +83,41 @@ export const Tbody = styled.tbody`
       }
     }
   }
-  @media (max-width: 670px) {
+  @media (max-width: 852px) {
     tr,
     td {
-      padding: 6px;
+      padding-left: 60px;
+      padding-right: 6px;
+      padding-top: 6px;
+      padding-bottom: 6px;
     }
   }
+  @media (max-width: 751px) {
+    tr,
+    td {
+      padding-left: 30px;
+      padding-right: 6px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+    }
+  }
+  @media (max-width: 606px) {
+    tr,
+    td {
+      padding: 0px;
+      font-size: 12px;
+    }
+  }
+`;
+export const IconEdit = styled(EditCircle)`
+  width: 18px;
+  height: 18px;
+  fill: var(--nevOrange);
+  cursor: pointer;
+`;
+export const IconDelet = styled(DeleteBack2)`
+  width: 18px;
+  height: 18px;
+  fill: var(--nevRed);
+  cursor: pointer;
 `;

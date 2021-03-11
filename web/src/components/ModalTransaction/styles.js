@@ -15,7 +15,7 @@ export const Grid = styled.div`
 export const Input = styled.input`
   width: ${(props) => (props.width ? `${props.width}px` : '490px')};
   height: 6px;
-  padding: 20px;
+  padding: 25px;
   margin-top: 4px;
   border: 1px solid var(--nevGrey);
   border-radius: 10px;
@@ -88,7 +88,7 @@ export const GridCategoryAccountCard = styled.div`
 `;
 export const Select = styled.select`
   width: ${(props) => (props.width ? `${props.width}px` : '240px')};
-  padding: 16px 16px 4px 16px;
+  padding: 12px 16px 14px 16px;
   border: 1px solid var(--nevGrey);
   border-radius: 10px;
   font-size: 16px;

@@ -17,6 +17,7 @@ function Provider({ children }) {
     balance,
     transactions,
     handleCreateTransaction,
+    handleEditTransaction,
   } = TransactionContext();
 
   return (
@@ -30,6 +31,7 @@ function Provider({ children }) {
         balance,
         transactions,
         handleCreateTransaction,
+        handleEditTransaction,
       }}
     >
       {children}

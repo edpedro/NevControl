@@ -38,7 +38,26 @@ function TransactionContext() {
     }
   }, []);
 
-  return { balance, transactions, handleCreateTransaction };
+  const handleEditTransaction = useCallback(async (id) => {
+    const token = localStorage.getItem('token');
+    try {
+      await api.delete(`/transacao/${id}`, {
+        headers: {
+          Authorization: JSON.parse(token),
+        },
+      });
+      setCreateTransaction(id);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, []);
+
+  return {
+    balance,
+    transactions,
+    handleCreateTransaction,
+    handleEditTransaction,
+  };
 }
 
 export default TransactionContext;
