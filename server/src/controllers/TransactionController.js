@@ -6,6 +6,19 @@ module.exports = {
 
     return res.status(200).json(data);
   },
+  async show(req, res) {
+    const { id } = req.params;
+
+    try {
+      const data = await Transactions.getTransactionId(id);
+
+      return res.status(200).json(data);
+    } catch (err) {
+      return res
+        .status(400)
+        .json(err, { error: "Falha na busca de transação" });
+    }
+  },
   async create(req, res) {
     const {
       type,

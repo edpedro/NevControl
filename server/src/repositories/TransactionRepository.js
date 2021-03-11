@@ -128,4 +128,13 @@ module.exports = {
 
     return restul;
   },
+  async getTransactionId(id) {
+    const transaction = await Transaction.findById(id).exec();
+
+    if (!transaction) {
+      return { error: "Transação não encontrado!" };
+    }
+
+    return transaction;
+  },
 };
