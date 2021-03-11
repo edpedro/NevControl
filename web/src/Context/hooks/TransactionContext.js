@@ -5,11 +5,11 @@ import api from '../../services/api';
 function TransactionContext() {
   const [balance, setBalance] = useState();
   const [transactions, setTransactions] = useState();
-  const [createTransaction, setCreateTransaction] = useState(false);
+  const [createTransaction, setCreateTransaction] = useState();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     async function getTransaction() {
+      const token = localStorage.getItem('token');
       const {
         data: { balance, data },
       } = await api.get('/transacao', {
@@ -22,10 +22,9 @@ function TransactionContext() {
       setBalance(balance);
     }
     getTransaction();
-  }, []);
+  }, [createTransaction]);
 
   const handleCreateTransaction = useCallback(async (useData) => {
-    console.log(useData);
     const token = localStorage.getItem('token');
     try {
       const data = await api.post('/transacao', useData, {
@@ -33,7 +32,7 @@ function TransactionContext() {
           Authorization: JSON.parse(token),
         },
       });
-      setCreateTransaction(true);
+      setCreateTransaction(data);
     } catch (error) {
       console.log(error.response.data);
     }

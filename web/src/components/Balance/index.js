@@ -22,7 +22,7 @@ function Balance() {
 
   return (
     <Container>
-      {balance && balance.currentBalance ? (
+      {balance && balance.accountBalance ? (
         <>
           <Recipe>
             <h2>Receita realizada</h2>

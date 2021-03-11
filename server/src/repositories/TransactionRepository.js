@@ -51,6 +51,7 @@ module.exports = {
         switch (curret.type) {
           case "receita":
             acc.accountBalance += curret.value;
+            break;
           case "despesa":
             if (curret.operation === "conta") {
               acc.negativeBalance += curret.value;
@@ -59,11 +60,6 @@ module.exports = {
             if (curret.operation === "cartao") {
               acc.cardBalance += curret.value;
             }
-          case "despesa":
-            if (curret.operation === "cartaoPessoaExterna") {
-              acc.balanceExternalPerson += curret.value;
-            }
-            break;
 
           default:
             break;
@@ -74,7 +70,6 @@ module.exports = {
         accountBalance: 0,
         negativeBalance: 0,
         cardBalance: 0,
-        balanceExternalPerson: 0,
         currentBalance: 0,
       }
     );

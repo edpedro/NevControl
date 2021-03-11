@@ -18,6 +18,7 @@ export const Header = styled.div`
 
   h4 {
     font-size: 15px;
+    text-align: center;
   }
 `;
 export const Grid = styled.div`
@@ -52,22 +53,21 @@ export const Tbody = styled.tbody`
 
     border-bottom: 1px solid var(--nevGrey);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
 
     &:nth-child(2) {
       font-weight: 500;
     }
     &:nth-child(3) {
-      font-weight: 600;
+      font-weight: 700;
     }
     &:nth-child(4) {
       color: var(--nevGree);
     }
 
     &.active {
-      /* background: var(--nevRed); */
       td {
-        &:nth-child(4) {
+        &:nth-child(3) {
           color: var(--nevRed);
         }
       }

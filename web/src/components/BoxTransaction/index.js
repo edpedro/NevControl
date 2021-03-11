@@ -8,7 +8,7 @@ import FormatDate from '../../utils/FormatDate';
 
 import { Container, Header, Grid, Table, Tbody } from './styles';
 
-function BoxTransaction({ title }) {
+function BoxTransaction({ title, validation }) {
   const { transactions } = useContext(Context);
 
   return (
@@ -22,15 +22,33 @@ function BoxTransaction({ title }) {
             transactions.map((transaction, key) => (
               <Tbody key={key}>
                 <tr className={transaction.type === 'despesa' ? 'active' : ''}>
-                  <td>{FormatDate(transaction.data)}</td>
-                  <td>{FormatUppercase(transaction.description)}</td>
-                  <td>{transaction.category}</td>
-                  <td>
-                    R${' '}
-                    {transaction.type === 'despesa'
-                      ? '-' + FormatCurrency(transaction.value)
-                      : '+' + FormatCurrency(transaction.value)}
-                  </td>
+                  {validation
+                    ? transaction.operation === 'conta' && (
+                        <>
+                          <td>{FormatDate(transaction.data)}</td>
+                          <td>{FormatUppercase(transaction.description)}</td>
+                          <td>{transaction.category}</td>
+                          <td>
+                            R${' '}
+                            {transaction.type === 'despesa'
+                              ? '-' + FormatCurrency(transaction.value)
+                              : '+' + FormatCurrency(transaction.value)}
+                          </td>
+                        </>
+                      )
+                    : transaction.operation === 'cartao' && (
+                        <>
+                          <td>{FormatDate(transaction.data)}</td>
+                          <td>{FormatUppercase(transaction.description)}</td>
+                          <td>{transaction.category}</td>
+                          <td>
+                            R${' '}
+                            {transaction.type === 'despesa'
+                              ? '-' + FormatCurrency(transaction.value)
+                              : '+' + FormatCurrency(transaction.value)}
+                          </td>
+                        </>
+                      )}
                 </tr>
               </Tbody>
             ))

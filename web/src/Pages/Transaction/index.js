@@ -13,7 +13,7 @@ function Transaction() {
         <Balance />
       </header>
       <main>
-        <BoxTransaction title="Historico Conta" />
+        <BoxTransaction title="Historico Conta" validation={true} />
         <Grid>
           <CardExternal />
         </Grid>

@@ -16,7 +16,10 @@ function CreditCard() {
         <CardNew />
       </Box>
       <Grid>
-        <BoxTransaction title="Historico Cartão de credito" />
+        <BoxTransaction
+          title="Historico Cartão de credito"
+          validation={false}
+        />
         <QuickAccess wsmall={400} hsmall={200} />
       </Grid>
     </Container>

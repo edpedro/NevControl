@@ -23,7 +23,7 @@ function Home() {
       </GridCard>
 
       <Grid>
-        <BoxTransaction title="Mais recente lançamento" />
+        <BoxTransaction title="Mais recente lançamento" validation={true} />
         <GridItem>
           <QuickAccess wsmall={400} hsmall={200} />
           <CardExternal />

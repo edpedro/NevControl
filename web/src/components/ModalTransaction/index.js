@@ -57,6 +57,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
     event.preventDefault();
 
     handleCreateTransaction(data);
+    onChange(false);
   }
 
   return (
@@ -91,7 +92,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
                 />
               </div>
               <div>
-                <Label htmlFor="date">Data</Label>
+                <Label htmlFor="data">Data</Label>
                 <Input
                   type="date"
                   id="date"
