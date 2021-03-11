@@ -17,10 +17,10 @@ import {
 } from './styles';
 
 function BoxTransaction({ title, validation }) {
-  const { transactions, handleEditTransaction } = useContext(Context);
+  const { transactions, handleRemoveTransaction } = useContext(Context);
 
-  function handleEdit(id) {
-    handleEditTransaction(id);
+  function handleRemove(id) {
+    handleRemoveTransaction(id);
   }
 
   return (
@@ -50,7 +50,7 @@ function BoxTransaction({ title, validation }) {
                             <IconEdit /> -{' '}
                             <IconDelet
                               onClick={() => {
-                                handleEdit(transaction._id);
+                                handleRemove(transaction._id);
                               }}
                             />
                           </td>
@@ -71,7 +71,7 @@ function BoxTransaction({ title, validation }) {
                             <IconEdit /> -{' '}
                             <IconDelet
                               onClick={() => {
-                                handleEdit(transaction._id);
+                                handleRemove(transaction._id);
                               }}
                             />
                           </td>

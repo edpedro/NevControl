@@ -38,7 +38,7 @@ function TransactionContext() {
     }
   }, []);
 
-  const handleEditTransaction = useCallback(async (id) => {
+  const handleRemoveTransaction = useCallback(async (id) => {
     const token = localStorage.getItem('token');
     try {
       await api.delete(`/transacao/${id}`, {
@@ -56,7 +56,7 @@ function TransactionContext() {
     balance,
     transactions,
     handleCreateTransaction,
-    handleEditTransaction,
+    handleRemoveTransaction,
   };
 }
 
