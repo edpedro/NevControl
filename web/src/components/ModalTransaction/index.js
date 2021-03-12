@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import { Context } from '../../Context/Context';
@@ -33,8 +33,8 @@ const customStyles = {
   },
 };
 
-function ModalTransaction({ isOpen, onChange, option }) {
-  const { handleCreateTransaction } = useContext(Context);
+function ModalTransaction({ isOpen, onChange, option, id }) {
+  const { handleCreateTransaction, updateTransaction } = useContext(Context);
 
   const [data, setData] = useState({
     type: option,
@@ -46,6 +46,12 @@ function ModalTransaction({ isOpen, onChange, option }) {
     accountCard: null,
   });
 
+  useEffect(() => {
+    if (updateTransaction) {
+      setData(updateTransaction);
+    }
+  }, [id, updateTransaction]);
+
   function closeModal() {
     onChange(false);
   }
@@ -56,7 +62,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
   async function handleSubmint(event) {
     event.preventDefault();
 
-    handleCreateTransaction(data);
+    handleCreateTransaction(data, id);
     onChange(false);
   }
 
@@ -78,6 +84,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
                 id="description"
                 name="description"
                 onChange={handleChange}
+                value={data.description || false}
               />
             </GridDescription>
             <GridValueDate>
@@ -89,6 +96,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
                   name="value"
                   width={240}
                   onChange={handleChange}
+                  value={data.value || false}
                 />
               </div>
               <div>
@@ -99,6 +107,7 @@ function ModalTransaction({ isOpen, onChange, option }) {
                   name="data"
                   width={240}
                   onChange={handleChange}
+                  value={data.data || ''}
                 />
               </div>
             </GridValueDate>
@@ -106,7 +115,11 @@ function ModalTransaction({ isOpen, onChange, option }) {
               <div>
                 <Label>
                   Conta/cartão
-                  <Select name="operation" onChange={handleChange}>
+                  <Select
+                    name="operation"
+                    onChange={handleChange}
+                    value={data && data.operation}
+                  >
                     <option value=""></option>
                     <option value="conta">Conta</option>
                     <option value="cartao">Cartão</option>
@@ -116,7 +129,11 @@ function ModalTransaction({ isOpen, onChange, option }) {
               <div>
                 <Label>
                   Categoria
-                  <Select name="category" onChange={handleChange}>
+                  <Select
+                    name="category"
+                    onChange={handleChange}
+                    value={data.category || false}
+                  >
                     <option value=""></option>
                     <option value="alimentação">Alimentação</option>
                     <option value="saab">Saab</option>
