@@ -37,7 +37,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
   const { handleCreateTransaction, updateTransaction } = useContext(Context);
 
   const [data, setData] = useState({
-    type: option,
     description: '',
     value: '',
     data: '',
@@ -57,7 +56,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
   }
   function handleChange(event) {
     const { name, value } = event.target;
-    setData((data) => ({ ...data, [name]: value }));
+    setData((data) => ({ ...data, [name]: value, type: option }));
   }
   async function handleSubmint(event) {
     event.preventDefault();
@@ -84,7 +83,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                 id="description"
                 name="description"
                 onChange={handleChange}
-                value={data.description || false}
+                value={data.description || ''}
               />
             </GridDescription>
             <GridValueDate>
