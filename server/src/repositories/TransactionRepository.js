@@ -1,5 +1,4 @@
 const Transaction = require("../models/Transaction");
-const CreditCard = require("../models/CreditCard");
 
 module.exports = {
   async createTransactions(
@@ -30,7 +29,7 @@ module.exports = {
   async getBalance(userId) {
     const transaction = await Transaction.find({ user: userId })
       .populate({ path: "user", select: "name" })
-      .populate({ path: "accountCard", select: ["name", "limit"] })
+      .populate({ path: "accountCard", select: ["name", "limit", "bank"] })
       .exec();
 
     const { accountBalance, negativeBalance, cardBalance } = transaction.reduce(

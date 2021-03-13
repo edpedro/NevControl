@@ -21,7 +21,7 @@ function Account() {
       return 'Boa tarde';
     }
     if (hours >= 0 && hours < 12) {
-      return 'Boa dia';
+      return 'Bom dia';
     }
   }
 

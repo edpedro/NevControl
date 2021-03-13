@@ -1,4 +1,5 @@
 const CreditCard = require("../models/CreditCard");
+const Transaction = require("../models/Transaction");
 
 module.exports = {
   async createCreditCard(name, limit, close, win, bank, userId) {
@@ -22,9 +23,26 @@ module.exports = {
     return creditCard;
   },
   async getCreditCard(userId) {
-    const creditCard = await CreditCard.find({ user: userId }).exec();
+    const creditCards = await CreditCard.find({ user: userId }).exec();
 
-    return creditCard;
+    const teste = Promise.all(
+      creditCards.map(async (creditCard) => {
+        const transactions = await Transaction.find({
+          accountCard: creditCard._id,
+        })
+          .populate({ path: "user", select: "name" })
+          .populate({ path: "accountCard", select: ["name", "limit"] })
+          .exec();
+
+        transactions.map((transaction) => {
+          creditCard.cardBalance += creditCard.limit - transaction.value;
+        });
+
+        return creditCard;
+      })
+    );
+
+    return teste;
   },
   async updateCreditCard(name, limit, close, win, bank, id) {
     const creditCard = await CreditCard.findById(id).exec();
