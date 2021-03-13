@@ -1,4 +1,5 @@
 const Transaction = require("../models/Transaction");
+const CreditCard = require("../models/CreditCard");
 
 module.exports = {
   async createTransactions(
@@ -11,16 +12,6 @@ module.exports = {
     userId,
     accountCard
   ) {
-    console.log(
-      type,
-      description,
-      value,
-      data,
-      category,
-      operation,
-      userId,
-      accountCard
-    );
     const newTransaction = new Transaction({
       description,
       value,
@@ -39,18 +30,19 @@ module.exports = {
   async getBalance(userId) {
     const transaction = await Transaction.find({ user: userId })
       .populate({ path: "user", select: "name" })
+      .populate({ path: "accountCard", select: ["name", "limit"] })
       .exec();
 
-    const {
-      accountBalance,
-      negativeBalance,
-      cardBalance,
-      balanceExternalPerson,
-    } = transaction.reduce(
+    const { accountBalance, negativeBalance, cardBalance } = transaction.reduce(
       (acc, curret) => {
         switch (curret.type) {
           case "receita":
-            acc.accountBalance += curret.value;
+            if (curret.operation === "conta") {
+              acc.accountBalance += curret.value;
+            }
+            if (curret.operation === "cartao") {
+              acc.cardBalance -= curret.value;
+            }
             break;
           case "despesa":
             if (curret.operation === "conta") {
@@ -80,7 +72,6 @@ module.exports = {
         negativeBalance,
         currentBalance,
         cardBalance,
-        balanceExternalPerson,
       },
       data: transaction,
     };
