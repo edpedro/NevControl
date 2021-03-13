@@ -1,25 +1,34 @@
 import { Container, Header, Main, Invoice, Limit } from './styles.js';
 
+import FormatUppercase from '../../utils/FormatUppercase';
+import FormatCurrency from '../../utils/FormatCurrency';
+
 import iconSantander from '../../assets/st.png';
 
-function Card() {
+function Card({ creditCard }) {
+  console.log(creditCard);
   return (
     <Container>
       <Header>
-        <h3>Santander</h3>
+        <h3>{creditCard && FormatUppercase(creditCard.bank)}</h3>
         <img src={iconSantander} alt="icone santander" />
       </Header>
       <Main>
         <Invoice>
           <h4>Fatura atual:</h4>
           <p>
-            R$ <span>150,00</span>
+            R${' '}
+            <span>{creditCard && FormatCurrency(creditCard.cardBalance)}</span>
           </p>
         </Invoice>
         <Limit>
           <h4>Limite disponivel:</h4>
           <p>
-            R$ <span> 960,00</span>
+            R${' '}
+            <span>
+              {creditCard &&
+                FormatCurrency(creditCard.limit - creditCard.cardBalance)}
+            </span>
           </p>
         </Limit>
       </Main>

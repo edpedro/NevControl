@@ -32,7 +32,7 @@ module.exports = {
       .populate({ path: "accountCard", select: ["name", "limit", "bank"] })
       .exec();
 
-    const { accountBalance, negativeBalance, cardBalance } = transaction.reduce(
+    const { accountBalance, negativeBalance } = transaction.reduce(
       (acc, curret) => {
         switch (curret.type) {
           case "receita":
@@ -47,10 +47,6 @@ module.exports = {
             if (curret.operation === "conta") {
               acc.negativeBalance += curret.value;
             }
-          case "despesa":
-            if (curret.operation === "cartao") {
-              acc.cardBalance += curret.value;
-            }
 
           default:
             break;
@@ -60,7 +56,6 @@ module.exports = {
       {
         accountBalance: 0,
         negativeBalance: 0,
-        cardBalance: 0,
         currentBalance: 0,
       }
     );
@@ -70,7 +65,6 @@ module.exports = {
         accountBalance,
         negativeBalance,
         currentBalance,
-        cardBalance,
       },
       data: transaction,
     };

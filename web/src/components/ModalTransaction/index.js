@@ -34,7 +34,11 @@ const customStyles = {
 };
 
 function ModalTransaction({ isOpen, onChange, option, id }) {
-  const { handleCreateTransaction, updateTransaction } = useContext(Context);
+  const {
+    handleCreateTransaction,
+    updateTransaction,
+    creditCards,
+  } = useContext(Context);
 
   const [data, setData] = useState({
     description: '',
@@ -152,8 +156,10 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                   onChange={handleChange}
                 >
                   <option value=""></option>
-                  <option value="asdasd321651">Santander</option>
-                  <option value="asdasd321651">Itau</option>
+                  {creditCards &&
+                    creditCards.map((creditCard) => (
+                      <option value={creditCard._id}>{creditCard.bank}</option>
+                    ))}
                 </Select>
               </GridType>
             )}

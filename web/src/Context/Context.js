@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 
 import useAuth from './hooks/useAuth';
 import TransactionContext from './hooks/TransactionContext';
+import CreditCardContext from './hooks/CreditCardContext';
 
 const Context = createContext();
 
@@ -22,6 +23,8 @@ function Provider({ children }) {
     updateTransaction,
   } = TransactionContext();
 
+  const { creditCards } = CreditCardContext();
+
   return (
     <Context.Provider
       value={{
@@ -36,6 +39,7 @@ function Provider({ children }) {
         handleRemoveTransaction,
         handleShowTransaction,
         updateTransaction,
+        creditCards,
       }}
     >
       {children}

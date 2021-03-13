@@ -35,7 +35,7 @@ module.exports = {
           .exec();
 
         transactions.map((transaction) => {
-          creditCard.cardBalance += creditCard.limit - transaction.value;
+          creditCard.cardBalance += transaction.value;
         });
 
         return creditCard;
