@@ -27,6 +27,8 @@ function Provider({ children }) {
     creditCards,
     stateUpdate,
     handleCreateCreditCard,
+    handleShowCreditCard,
+    updateCreditCard,
   } = CreditCardContext();
 
   return (
@@ -46,6 +48,8 @@ function Provider({ children }) {
         creditCards,
         stateUpdate,
         handleCreateCreditCard,
+        handleShowCreditCard,
+        updateCreditCard,
       }}
     >
       {children}

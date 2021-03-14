@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { EditCircle, DeleteBack2 } from '../../styles/Icons';
 
 export const Container = styled.div`
   display: flex;
@@ -67,4 +68,21 @@ export const Limit = styled.div`
       color: var(--nevBrack);
     }
   }
+`;
+export const IconGrid = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const IconEdit = styled(EditCircle)`
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  fill: var(--nevOrange);
+  cursor: pointer;
+`;
+export const IconDelet = styled(DeleteBack2)`
+  width: 18px;
+  height: 18px;
+  fill: var(--nevRed);
+  cursor: pointer;
 `;

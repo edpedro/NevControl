@@ -34,16 +34,14 @@ module.exports = {
           .populate({ path: "accountCard", select: ["name", "limit"] })
           .exec();
 
-        transactions.map((transaction) => {         
-
+        transactions.map((transaction) => {
           if (transaction.type === "receita") {
             creditCard.cardBalance -= transaction.value;
-          }else{
+          } else {
             creditCard.cardBalance += transaction.value;
-          }         
-          
+          }
         });
-        
+
         return creditCard;
       })
     );
@@ -80,5 +78,14 @@ module.exports = {
     const restul = await CreditCard.findOneAndRemove({ _id: id });
 
     return restul;
+  },
+  async getCreditCardId(id) {
+    const creditCards = await CreditCard.findById(id).exec();
+
+    if (!creditCards) {
+      return { error: "Cartão de credito não encontrado!" };
+    }
+
+    return creditCards;
   },
 };

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
 
 import { Context } from '../../Context/Context';
@@ -33,8 +33,8 @@ const customStyles = {
   },
 };
 
-function ModalCard({ isOpen, onChange }) {
-  const { handleCreateCreditCard } = useContext(Context);
+function ModalCard({ isOpen, onChange, id }) {
+  const { handleCreateCreditCard, updateCreditCard } = useContext(Context);
   const [data, setData] = useState({
     name: '',
     limit: '',
@@ -42,6 +42,12 @@ function ModalCard({ isOpen, onChange }) {
     win: '',
     bank: '',
   });
+
+  useEffect(() => {
+    if (updateCreditCard) {
+      setData(updateCreditCard);
+    }
+  }, [id, updateCreditCard]);
 
   function closeModal() {
     onChange(false);
@@ -54,7 +60,7 @@ function ModalCard({ isOpen, onChange }) {
   async function handleSubmint(event) {
     event.preventDefault();
 
-    handleCreateCreditCard(data);
+    handleCreateCreditCard(data, id);
 
     onChange(false);
   }
@@ -101,7 +107,6 @@ function ModalCard({ isOpen, onChange }) {
                   name="close"
                   width={240}
                   onChange={handleChange}
-                  value={data.close || ''}
                 />
               </div>
               <div>
@@ -112,7 +117,6 @@ function ModalCard({ isOpen, onChange }) {
                   name="win"
                   width={240}
                   onChange={handleChange}
-                  value={data.win || ''}
                 />
               </div>
             </GridDate>
@@ -128,6 +132,7 @@ function ModalCard({ isOpen, onChange }) {
                 <option value=""></option>
                 <option value="nubank">Nubank</option>
                 <option value="santander">Santander</option>
+                <option value="itau">itau</option>
               </Select>
             </GridInstitution>
             <Button title="Adicionar" />

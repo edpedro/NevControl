@@ -7,6 +7,19 @@ module.exports = {
 
     return res.status(200).json({ creditCard });
   },
+  async show(req, res) {
+    const { id } = req.params;
+
+    try {
+      const data = await creditCardRepository.getCreditCardId(id);
+
+      return res.status(200).json(data);
+    } catch (err) {
+      return res
+        .status(400)
+        .json(err, { error: "Falha na busca do cartão de credito" });
+    }
+  },
   async create(req, res) {
     const { name, limit, close, win, bank } = req.body;
 
