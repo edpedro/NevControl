@@ -61,12 +61,27 @@ function CreditCardContext() {
     }
   }, []);
 
+  const handleRemoveCreditCard = useCallback(async (id) => {
+    const token = localStorage.getItem('token');
+    try {
+      await api.delete(`/creditcard/${id}`, {
+        headers: {
+          Authorization: JSON.parse(token),
+        },
+      });
+      setCreateCreditCard(id);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, []);
+
   return {
     creditCards,
     stateUpdate,
     handleCreateCreditCard,
     handleShowCreditCard,
     updateCreditCard,
+    handleRemoveCreditCard,
   };
 }
 

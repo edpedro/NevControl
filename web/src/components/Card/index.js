@@ -19,7 +19,11 @@ import FormatUppercase from '../../utils/FormatUppercase';
 import FormatCurrency from '../../utils/FormatCurrency';
 
 function Card({ creditCard }) {
-  const { handleShowCreditCard } = useContext(Context);
+  const {
+    handleShowCreditCard,
+    handleRemoveCreditCard,
+    stateUpdate,
+  } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState('');
 
@@ -27,6 +31,10 @@ function Card({ creditCard }) {
     setIsOpen(!isOpen);
     setId(id);
     handleShowCreditCard(id);
+  }
+  function handleRemove(id) {
+    handleRemoveCreditCard(id);
+    stateUpdate(true);
   }
   return (
     <>
@@ -36,7 +44,11 @@ function Card({ creditCard }) {
           <IconGrid>
             <IconEdit onClick={() => handleIsOpen(creditCard._id)} />
 
-            <IconDelet />
+            <IconDelet
+              onClick={() => {
+                handleRemove(creditCard._id);
+              }}
+            />
           </IconGrid>
         </Header>
         <Main>
