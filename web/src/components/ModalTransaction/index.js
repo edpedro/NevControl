@@ -38,6 +38,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
     handleCreateTransaction,
     updateTransaction,
     creditCards,
+    stateUpdate,
   } = useContext(Context);
 
   const [data, setData] = useState({
@@ -66,6 +67,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
     event.preventDefault();
 
     handleCreateTransaction(data, id);
+    stateUpdate(true);
     onChange(false);
   }
 

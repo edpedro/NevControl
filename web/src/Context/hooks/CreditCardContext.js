@@ -4,6 +4,7 @@ import api from '../../services/api';
 
 function CreditCardContext() {
   const [creditCards, setCreditCards] = useState();
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     async function getCreditCard() {
@@ -19,10 +20,15 @@ function CreditCardContext() {
       setCreditCards(creditCard);
     }
     getCreditCard();
-  }, []);
+  }, [update]);
+
+  const stateUpdate = (state) => {
+    setUpdate(state);
+  };
 
   return {
     creditCards,
+    stateUpdate,
   };
 }
 

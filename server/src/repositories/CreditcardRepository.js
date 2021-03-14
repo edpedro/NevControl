@@ -35,9 +35,12 @@ module.exports = {
           .exec();
 
         transactions.map((transaction) => {
+          if (transaction.type === "receita") {
+            creditCard.cardBalance -= transaction.value;
+          }
           creditCard.cardBalance += transaction.value;
         });
-
+        console.log(transactions);
         return creditCard;
       })
     );

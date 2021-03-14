@@ -23,7 +23,7 @@ function Provider({ children }) {
     updateTransaction,
   } = TransactionContext();
 
-  const { creditCards } = CreditCardContext();
+  const { creditCards, stateUpdate } = CreditCardContext();
 
   return (
     <Context.Provider
@@ -40,6 +40,7 @@ function Provider({ children }) {
         handleShowTransaction,
         updateTransaction,
         creditCards,
+        stateUpdate,
       }}
     >
       {children}
