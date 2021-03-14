@@ -34,13 +34,16 @@ module.exports = {
           .populate({ path: "accountCard", select: ["name", "limit"] })
           .exec();
 
-        transactions.map((transaction) => {
+        transactions.map((transaction) => {         
+
           if (transaction.type === "receita") {
             creditCard.cardBalance -= transaction.value;
-          }
-          creditCard.cardBalance += transaction.value;
+          }else{
+            creditCard.cardBalance += transaction.value;
+          }         
+          
         });
-        console.log(transactions);
+        
         return creditCard;
       })
     );

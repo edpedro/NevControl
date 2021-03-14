@@ -6,7 +6,6 @@ import FormatCurrency from '../../utils/FormatCurrency';
 import iconSantander from '../../assets/st.png';
 
 function Card({ creditCard }) {
-  console.log(creditCard);
   return (
     <Container>
       <Header>

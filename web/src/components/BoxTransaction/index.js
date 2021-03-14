@@ -23,6 +23,7 @@ function BoxTransaction({ title, validation }) {
     transactions,
     handleRemoveTransaction,
     handleShowTransaction,
+    stateUpdate,
   } = useContext(Context);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -38,8 +39,8 @@ function BoxTransaction({ title, validation }) {
 
   function handleRemove(id) {
     handleRemoveTransaction(id);
+    stateUpdate(true);
   }
-
   return (
     <>
       <Container>
@@ -87,7 +88,10 @@ function BoxTransaction({ title, validation }) {
                       : transaction.operation === 'cartao' && (
                           <>
                             <td>{FormatDate(transaction.data)}</td>
-                            <td>{FormatUppercase(transaction.operation)}</td>
+                            <td>
+                              {transaction.accountCard &&
+                                FormatUppercase(transaction.accountCard.bank)}
+                            </td>
                             <td>{transaction.category}</td>
                             <td>
                               R${' '}

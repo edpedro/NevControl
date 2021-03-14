@@ -67,7 +67,9 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
     event.preventDefault();
 
     handleCreateTransaction(data, id);
+
     stateUpdate(true);
+    
     onChange(false);
   }
 

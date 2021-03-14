@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import Modal from 'react-modal';
+
+import { Context } from '../../Context/Context';
 
 import {
   Grid,
@@ -32,7 +34,28 @@ const customStyles = {
 };
 
 function ModalCard({ isOpen, onChange }) {
+  const { handleCreateCreditCard } = useContext(Context);
+  const [data, setData] = useState({
+    name: '',
+    limit: '',
+    close: '',
+    win: '',
+    bank: '',
+  });
+
   function closeModal() {
+    onChange(false);
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setData((data) => ({ ...data, [name]: value }));
+  }
+  async function handleSubmint(event) {
+    event.preventDefault();
+
+    handleCreateCreditCard(data);
+
     onChange(false);
   }
 
@@ -44,33 +67,64 @@ function ModalCard({ isOpen, onChange }) {
         style={customStyles}
         contentLabel="Modal Card"
       >
-        {/* <button onClick={closeModal}>close</button> */}
         <Grid>
           <h2>Adicionar Cartão de Crédito</h2>
-          <form>
+          <form onSubmit={handleSubmint}>
             <GridName>
               <Label htmlFor="name">Nome da conta</Label>
-              <Input type="text" id="name" name="name" />
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                onChange={handleChange}
+                value={data.name || ''}
+              />
             </GridName>
             <GridLimit>
               <div>
                 <Label htmlFor="limit">Limite</Label>
-                <Input type="number" id="limit" name="limit" />
+                <Input
+                  type="number"
+                  id="limit"
+                  name="limit"
+                  onChange={handleChange}
+                  value={data.limit || ''}
+                />
               </div>
             </GridLimit>
             <GridDate>
               <div>
-                <Label htmlFor="closeDay">Fechar dia</Label>
-                <Input type="month" id="closeDay" name="closeDay" width={240} />
+                <Label htmlFor="close">Fechar dia</Label>
+                <Input
+                  type="month"
+                  id="close"
+                  name="close"
+                  width={240}
+                  onChange={handleChange}
+                  value={data.close || ''}
+                />
               </div>
               <div>
                 <Label htmlFor="winDay">Vence dia</Label>
-                <Input type="month" id="winDay" name="winDay" width={240} />
+                <Input
+                  type="month"
+                  id="win"
+                  name="win"
+                  width={240}
+                  onChange={handleChange}
+                  value={data.win || ''}
+                />
               </div>
             </GridDate>
             <GridInstitution>
-              <Label htmlFor="institution">Bandeira/Instituição</Label>
-              <Select name="institution" id="institution" width={490}>
+              <Label htmlFor="bank">Bandeira/Instituição</Label>
+              <Select
+                name="bank"
+                id="bank"
+                width={490}
+                onChange={handleChange}
+                value={data.bank || ''}
+              >
                 <option value=""></option>
                 <option value="nubank">Nubank</option>
                 <option value="santander">Santander</option>

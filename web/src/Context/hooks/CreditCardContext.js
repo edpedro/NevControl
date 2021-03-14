@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import api from '../../services/api';
 
 function CreditCardContext() {
-  const [creditCards, setCreditCards] = useState();
+  const [creditCards, setCreditCards] = useState([]);
+  const [createCreditCard, setCreateCreditCard] = useState({});
   const [update, setUpdate] = useState(false);
 
   useEffect(() => {
@@ -20,15 +21,35 @@ function CreditCardContext() {
       setCreditCards(creditCard);
     }
     getCreditCard();
-  }, [update]);
+    setUpdate(false);
+  }, [update, createCreditCard]);
 
   const stateUpdate = (state) => {
     setUpdate(state);
   };
 
+  const handleCreateCreditCard = useCallback(async (useData, id) => {
+    const token = localStorage.getItem('token');
+
+    // const url = id ? `/creditcard/${id}` : '/creditcard';
+    // const method = id ? api.put : api.post;
+
+    try {
+      const data = await api.post('/creditcard', useData, {
+        headers: {
+          Authorization: JSON.parse(token),
+        },
+      });
+      setCreateCreditCard(data);
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  }, []);
+
   return {
     creditCards,
     stateUpdate,
+    handleCreateCreditCard,
   };
 }
 

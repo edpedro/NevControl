@@ -23,7 +23,11 @@ function Provider({ children }) {
     updateTransaction,
   } = TransactionContext();
 
-  const { creditCards, stateUpdate } = CreditCardContext();
+  const {
+    creditCards,
+    stateUpdate,
+    handleCreateCreditCard,
+  } = CreditCardContext();
 
   return (
     <Context.Provider
@@ -41,6 +45,7 @@ function Provider({ children }) {
         updateTransaction,
         creditCards,
         stateUpdate,
+        handleCreateCreditCard,
       }}
     >
       {children}
