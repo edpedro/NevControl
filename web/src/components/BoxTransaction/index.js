@@ -23,7 +23,7 @@ function BoxTransaction({ title, validation }) {
     transactions,
     handleRemoveTransaction,
     handleShowTransaction,
-    stateUpdate,
+    stateUpdateCreditCard,
   } = useContext(Context);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +39,7 @@ function BoxTransaction({ title, validation }) {
 
   function handleRemove(id) {
     handleRemoveTransaction(id);
-    stateUpdate(true);
+    stateUpdateCreditCard(true);
   }
   return (
     <>

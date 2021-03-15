@@ -7,6 +7,7 @@ function TransactionContext() {
   const [transactions, setTransactions] = useState({});
   const [createTransaction, setCreateTransaction] = useState();
   const [updateTransaction, setUpdateTransaction] = useState({});
+  const [update, setUpdate] = useState(false);
 
   useEffect(() => {
     async function getTransaction() {
@@ -21,9 +22,14 @@ function TransactionContext() {
 
       setTransactions(data);
       setBalance(balance);
+      setUpdate(false);
     }
     getTransaction();
-  }, [createTransaction]);
+  }, [createTransaction, update]);
+
+  const stateUpdateTransaction = (state) => {
+    setUpdate(state);
+  };
 
   const handleCreateTransaction = useCallback(async (useData, id) => {
     const token = localStorage.getItem('token');
@@ -77,6 +83,7 @@ function TransactionContext() {
     handleRemoveTransaction,
     handleShowTransaction,
     updateTransaction,
+    stateUpdateTransaction,
   };
 }
 

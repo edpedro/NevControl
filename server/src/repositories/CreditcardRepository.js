@@ -75,6 +75,14 @@ module.exports = {
       return { error: "Cartão de credito não encontrado!" };
     }
 
+    const transactions = await Transaction.find({
+      accountCard: creditCard._id,
+    }).exec();
+
+    transactions.forEach(async (transaction) => {
+      await Transaction.deleteMany({ _id: transaction._id });
+    });
+
     const restul = await CreditCard.findOneAndRemove({ _id: id });
 
     return restul;

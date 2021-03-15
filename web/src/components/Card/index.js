@@ -22,7 +22,8 @@ function Card({ creditCard }) {
   const {
     handleShowCreditCard,
     handleRemoveCreditCard,
-    stateUpdate,
+    stateUpdateCreditCard,
+    stateUpdateTransaction,
   } = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState('');
@@ -34,7 +35,8 @@ function Card({ creditCard }) {
   }
   function handleRemove(id) {
     handleRemoveCreditCard(id);
-    stateUpdate(true);
+    stateUpdateCreditCard(true);
+    stateUpdateTransaction(true);
   }
   return (
     <>

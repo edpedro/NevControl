@@ -25,7 +25,7 @@ function CreditCardContext() {
     setUpdate(false);
   }, [update, createCreditCard]);
 
-  const stateUpdate = (state) => {
+  const stateUpdateCreditCard = (state) => {
     setUpdate(state);
   };
 
@@ -77,7 +77,7 @@ function CreditCardContext() {
 
   return {
     creditCards,
-    stateUpdate,
+    stateUpdateCreditCard,
     handleCreateCreditCard,
     handleShowCreditCard,
     updateCreditCard,

@@ -22,11 +22,12 @@ function Provider({ children }) {
     handleRemoveTransaction,
     handleShowTransaction,
     updateTransaction,
+    stateUpdateTransaction,
   } = TransactionContext();
 
   const {
     creditCards,
-    stateUpdate,
+    stateUpdateCreditCard,
     handleCreateCreditCard,
     handleShowCreditCard,
     updateCreditCard,
@@ -49,11 +50,12 @@ function Provider({ children }) {
         handleShowTransaction,
         updateTransaction,
         creditCards,
-        stateUpdate,
+        stateUpdateCreditCard,
         handleCreateCreditCard,
         handleShowCreditCard,
         updateCreditCard,
         handleRemoveCreditCard,
+        stateUpdateTransaction,
       }}
     >
       {children}

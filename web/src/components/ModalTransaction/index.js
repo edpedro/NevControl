@@ -38,7 +38,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
     handleCreateTransaction,
     updateTransaction,
     creditCards,
-    stateUpdate,
+    stateUpdateCreditCard,
   } = useContext(Context);
 
   const [data, setData] = useState({
@@ -68,8 +68,8 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
 
     handleCreateTransaction(data, id);
 
-    stateUpdate(true);
-    
+    stateUpdateCreditCard(true);
+
     onChange(false);
   }
 
