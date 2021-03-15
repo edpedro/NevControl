@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+
+import { Context } from '../../Context/Context';
 
 import { useLocation, Link } from 'react-router-dom';
 
 import { Container, StyledBurger, Nav, Button, CircleIcon } from './styles';
 
 function NavBurger() {
+  const { handleLogout } = useContext(Context);
   const [open, setOpen] = useState(false);
   const location = useLocation();
+
+  function Logout() {
+    handleLogout();
+  }
 
   return (
     <Container>
@@ -31,7 +38,7 @@ function NavBurger() {
             <span>Cartão</span>
           </Button>
         </Link>
-        <Link to="/login" style={{ textDecoration: 'none' }}>
+        <Link to="/login" style={{ textDecoration: 'none' }} onClick={Logout}>
           <CircleIcon />
         </Link>
       </Nav>

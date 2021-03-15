@@ -13,6 +13,7 @@ function Provider({ children }) {
     user,
     authenticated,
     loading,
+    handleLogout,
   } = useAuth();
   const {
     balance,
@@ -36,6 +37,7 @@ function Provider({ children }) {
     <Context.Provider
       value={{
         handleLogin,
+        handleLogout,
         handleRegister,
         user,
         authenticated,

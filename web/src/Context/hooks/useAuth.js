@@ -61,7 +61,21 @@ function useAuth() {
     }
   }, []);
 
-  return { handleLogin, handleRegister, user, authenticated, loading };
+  function handleLogout() {
+    setAuthenticated(false);
+    localStorage.removeItem('token');
+    api.defaults.headers.Authorization = undefined;
+    history.push('/login');
+  }
+
+  return {
+    handleLogin,
+    handleRegister,
+    user,
+    authenticated,
+    loading,
+    handleLogout,
+  };
 }
 
 export default useAuth;
