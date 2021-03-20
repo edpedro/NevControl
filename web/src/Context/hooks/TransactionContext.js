@@ -10,9 +10,10 @@ function TransactionContext() {
   const [updateTransaction, setUpdateTransaction] = useState({});
   const [update, setUpdate] = useState(false);
 
+  const token = localStorage.getItem('token');
+
   useEffect(() => {
     async function getTransaction() {
-      const token = localStorage.getItem('token');
       const {
         data: { balance, data },
       } = await api.get('/transacao', {
@@ -26,7 +27,7 @@ function TransactionContext() {
       setUpdate(false);
     }
     getTransaction();
-  }, [createTransaction, update]);
+  }, [createTransaction, update, token]);
 
   const stateUpdateTransaction = (state) => {
     setUpdate(state);

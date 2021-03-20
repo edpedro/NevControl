@@ -20,7 +20,7 @@ function useAuth() {
     }
 
     setLoading(false);
-  }, []);
+  }, [loading]);
 
   const handleLogin = useCallback(async (useData) => {
     try {
@@ -36,7 +36,7 @@ function useAuth() {
       api.defaults.headers.Authorization = `Bearer ${token}`;
 
       setAuthenticated(true);
-
+      setLoading(true);
       setUser(name);
 
       toast.success('Login efetuado com sucesso!');
@@ -75,6 +75,7 @@ function useAuth() {
   function handleLogout() {
     setAuthenticated(false);
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     api.defaults.headers.Authorization = undefined;
     history.push('/login');
   }

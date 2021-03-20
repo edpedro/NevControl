@@ -9,9 +9,10 @@ function CreditCardContext() {
   const [updateCreditCard, setUpdateCreditCard] = useState({});
   const [update, setUpdate] = useState(false);
 
+  const token = localStorage.getItem('token');
+
   useEffect(() => {
     async function getCreditCard() {
-      const token = localStorage.getItem('token');
       const {
         data: { creditCard },
       } = await api.get('/creditcard', {
@@ -21,10 +22,10 @@ function CreditCardContext() {
       });
 
       setCreditCards(creditCard);
+      setUpdate(false);
     }
     getCreditCard();
-    setUpdate(false);
-  }, [update, createCreditCard]);
+  }, [update, createCreditCard, token]);
 
   const stateUpdateCreditCard = (state) => {
     setUpdate(state);
