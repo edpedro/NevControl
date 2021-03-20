@@ -190,7 +190,9 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                   <option value="">Selecione</option>
                   {creditCards &&
                     creditCards.map((creditCard) => (
-                      <option value={creditCard._id}>{creditCard.bank}</option>
+                      <option key={creditCard._id} value={creditCard._id}>
+                        {creditCard.bank}
+                      </option>
                     ))}
                 </Select>
               </GridType>

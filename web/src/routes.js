@@ -9,12 +9,15 @@ import Resgister from './Pages/Register';
 import Transaction from './Pages/Transaction';
 import CreditCard from './Pages/CreditCard';
 
+import Loading from './components/Loading';
+
 function PrivateRoute({ isPrivate, ...res }) {
   const { loading, authenticated } = useContext(Context);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
+
   if (isPrivate && !authenticated) {
     return <Redirect to="/login" />;
   }

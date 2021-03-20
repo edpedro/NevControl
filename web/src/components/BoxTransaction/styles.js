@@ -52,7 +52,7 @@ export const Tbody = styled.tbody`
   tr,
   td {
     text-align: left;
-    padding-left: 80px;
+    padding-left: 40px;
     padding-right: 6px;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -104,8 +104,8 @@ export const Tbody = styled.tbody`
   @media (max-width: 606px) {
     tr,
     td {
-      padding: 0px;
-      font-size: 12px;
+      padding: 0;
+      font-size: 10px;
     }
   }
 `;
