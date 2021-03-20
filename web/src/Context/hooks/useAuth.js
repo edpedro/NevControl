@@ -1,4 +1,5 @@
 import { useCallback, useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 import history from '../../services/history';
@@ -33,11 +34,16 @@ function useAuth() {
       localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('user', name);
       api.defaults.headers.Authorization = `Bearer ${token}`;
+
       setAuthenticated(true);
+
       setUser(name);
+
+      toast.success('Login efetuado com sucesso!');
+
       history.push('/');
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data);
     }
   }, []);
 
@@ -53,11 +59,16 @@ function useAuth() {
       localStorage.setItem('token', JSON.stringify(token));
       localStorage.setItem('user', name);
       api.defaults.headers.Authorization = `Bearer ${token}`;
+
       setAuthenticated(true);
+
       setUser(name);
+
+      toast.success('Cadastro efetuado com sucesso!');
+
       history.push('/');
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data.message);
     }
   }, []);
 

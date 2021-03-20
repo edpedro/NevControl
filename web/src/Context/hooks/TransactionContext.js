@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -44,8 +45,14 @@ function TransactionContext() {
         },
       });
       setCreateTransaction(data);
+
+      const message = id
+        ? 'Transação atualizada com sucesso'
+        : 'Transação cadastrada com sucesso';
+
+      toast.success(message);
     } catch (error) {
-      console.log(error.response.data);
+      toast.success(error.response.data);
     }
   }, []);
 
@@ -58,8 +65,10 @@ function TransactionContext() {
         },
       });
       setCreateTransaction(id);
+
+      toast.success('Transação deletada com sucesso!');
     } catch (error) {
-      console.log(error.response);
+      toast.success(error.response);
     }
   }, []);
   const handleShowTransaction = useCallback(async (id) => {

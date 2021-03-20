@@ -13,7 +13,7 @@ import { Context } from '../../Context/Context';
 import { Container, Box, GridCard, Grid, GridItem } from './styles';
 
 function Home() {
-  const { creditCards } = useContext(Context);
+  const { creditCards, transactions } = useContext(Context);
 
   return (
     <Container>
@@ -35,7 +35,12 @@ function Home() {
         <BoxTransaction title="Mais recente lançamento" validation={true} />
         <GridItem>
           <QuickAccess wsmall={400} hsmall={200} />
-          <CardExternal />
+          {transactions &&
+            transactions.length > 0 &&
+            transactions.map(
+              (transaction) =>
+                transaction.operation === 'cartao' && <CardExternal />
+            )}
         </GridItem>
       </Grid>
     </Container>

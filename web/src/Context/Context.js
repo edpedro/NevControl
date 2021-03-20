@@ -14,6 +14,7 @@ function Provider({ children }) {
     authenticated,
     loading,
     handleLogout,
+    alertAuth,
   } = useAuth();
   const {
     balance,
@@ -56,6 +57,7 @@ function Provider({ children }) {
         updateCreditCard,
         handleRemoveCreditCard,
         stateUpdateTransaction,
+        alertAuth,
       }}
     >
       {children}

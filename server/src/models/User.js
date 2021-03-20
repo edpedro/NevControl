@@ -30,19 +30,19 @@ userSchema.methods.generateAuthToken = async function () {
   const user = this;
   const token = jwt.sign(
     { _id: user._id, name: user.name, email: user.email },
-    process.env.SECRET    
+    process.env.SECRET
   );
   return token;
 };
 
 userSchema.statics.findByCredentials = async (email, password) => {
   if (!email || !password) {
-    throw new Error("favor preencher todos dados!");
+    throw new Error("Favor preencher todos dados!");
   }
   const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error("email não encontrado!");
+    throw new Error("Email não encontrado!");
   }
   const isPasswordMatch = await bcrypt.compare(password, user.password);
   if (!isPasswordMatch) {

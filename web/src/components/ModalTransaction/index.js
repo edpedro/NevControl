@@ -16,6 +16,27 @@ import {
 
 import Button from '../Button';
 
+const recipe = ['Empréstimo', 'Investimento', 'Outra receita', 'Salario'];
+const expense = [
+  'Alimentação',
+  ' Assinaturas e serviços',
+  ' Bares e restaurantes',
+  'Casa',
+  'Compras',
+  'Cuidados pessoais',
+  ' Dívidas e empréstimos',
+  'Educação',
+  'Família e filhos',
+  'Impostos e Taxas',
+  'Investimentos',
+  'Lazer e hobbies',
+  'Mercado',
+  'Pagamento de fatura',
+  'Pets',
+  'Roupas',
+  'Saúde',
+];
+
 Modal.setAppElement('#root');
 
 const customStyles = {
@@ -127,7 +148,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                     onChange={handleChange}
                     value={data && data.operation}
                   >
-                    <option value=""></option>
+                    <option value="">Selecione</option>
                     <option value="conta">Conta</option>
                     <option value="cartao">Cartão</option>
                   </Select>
@@ -141,11 +162,18 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                     onChange={handleChange}
                     value={data.category || false}
                   >
-                    <option value=""></option>
-                    <option value="alimentação">Alimentação</option>
-                    <option value="saab">Saab</option>
-                    <option value="opel">Opel</option>
-                    <option value="audi">Audi</option>
+                    <option value="">Selecione</option>
+                    {option === 'receita'
+                      ? recipe.map((name) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))
+                      : expense.map((name) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
                   </Select>
                 </Label>
               </div>
@@ -159,7 +187,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                   width={490}
                   onChange={handleChange}
                 >
-                  <option value=""></option>
+                  <option value="">Selecione</option>
                   {creditCards &&
                     creditCards.map((creditCard) => (
                       <option value={creditCard._id}>{creditCard.bank}</option>

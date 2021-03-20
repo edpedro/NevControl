@@ -43,7 +43,10 @@ function Login() {
             />
           </div>
           <div>
-            <Link to="/resgister" style={{ textDecoration: 'none' }}>
+            <Link
+              to="/resgister"
+              style={{ textDecoration: 'none', color: '#000' }}
+            >
               <p>» Ainda não possui conta? Faça o cadastro agora mesmo!</p>
             </Link>
           </div>

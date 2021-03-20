@@ -1,11 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: var(--nevBrack);
+    
   }
   html, body, #root {
     max-height: 100vh;
@@ -31,5 +32,5 @@ export default createGlobalStyle`
     --nevRed: #EC1C24;
     --nevGrey: #DBDDE6;
     --nevOrange: #ff8c00 ;  
-  }
+  } 
 `;

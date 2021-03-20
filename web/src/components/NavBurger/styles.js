@@ -111,6 +111,7 @@ export const CircleIcon = styled(LogInCircle)`
   height: 28px;
   width: 28px;
   margin: 10px 18px 0;
+  fill: var(--nevBrack);
   cursor: pointer;
 
   @media (max-width: 768px) {

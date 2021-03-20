@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
+import { toast } from 'react-toastify';
 
 import api from '../../services/api';
 
@@ -42,8 +43,13 @@ function CreditCardContext() {
         },
       });
       setCreateCreditCard(data);
+      const message = id
+        ? 'Cartão de credito atualizada com sucesso'
+        : 'Cartão de credito cadastrada com sucesso';
+
+      toast.success(message);
     } catch (error) {
-      console.log(error.response.data);
+      toast.success(error.response.data);
     }
   }, []);
 
@@ -70,8 +76,9 @@ function CreditCardContext() {
         },
       });
       setCreateCreditCard(id);
+      toast.success('Cartão de credito deletada com sucesso!');
     } catch (error) {
-      console.log(error.response);
+      toast.success(error.response);
     }
   }, []);
 

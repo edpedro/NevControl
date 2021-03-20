@@ -15,6 +15,11 @@ export const Container = styled.div`
   transition: 0.3s;
   cursor: pointer;
 
+  p {
+    color: var(--nevBrack);
+    font-weight: 600;
+  }
+
   &:hover {
     background: var(--primary);
     border: 1px solid var(--nevGrey);

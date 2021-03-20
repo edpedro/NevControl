@@ -9,6 +9,7 @@ function CardNew() {
   return (
     <>
       <Container onClick={() => setIsOpen(!isOpen)}>
+        <p>Novo cartão de credito</p>
         <IconPlus />
       </Container>
       {isOpen && (

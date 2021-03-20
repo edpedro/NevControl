@@ -1,4 +1,6 @@
 import { Router } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
 import GlobalStyles from './styles/GlobalStyles';
 
 import Routes from './routes';
@@ -16,6 +18,18 @@ function App() {
         <Routes />
       </Router>
       <GlobalStyles />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+        className="toast-container"
+      />
     </Provider>
   );
 }

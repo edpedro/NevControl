@@ -48,7 +48,7 @@ function Register() {
             />
           </div>
           <div>
-            <Link to="/login" style={{ textDecoration: 'none' }}>
+            <Link to="/login" style={{ textDecoration: 'none', color: '#000' }}>
               <p>» Já tem conta? Faça Login!</p>
             </Link>
           </div>

@@ -18,11 +18,11 @@ import {
 } from './styles';
 
 function Balance() {
-  const { balance } = useContext(Context);
+  const { balance, transactions } = useContext(Context);
 
   return (
     <Container>
-      {balance && balance ? (
+      {transactions && transactions.length > 0 ? (
         <>
           <Recipe>
             <h2>Receita realizada</h2>

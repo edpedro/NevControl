@@ -6,7 +6,7 @@ module.exports = {
 
     try {
       if (!name || !email || !password) {
-        return res.status(401).json({ message: "favor preencher todos dados" });
+        return res.status(401).json({ message: "Favor preencher todos dados" });
       }
 
       const checkEmail = await User.find({ email });
