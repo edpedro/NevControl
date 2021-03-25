@@ -5,7 +5,7 @@ export const Grid = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: ${(props) => (props.option === 'receita' ? '60px' : '40px')};
+  margin-top: ${(props) => (props.option === 'receita' ? '10px' : '10px')};
 
   h2 {
     font-size: 30px;
@@ -55,8 +55,15 @@ export const GridValueDate = styled.div`
   justify-content: center;
   align-items: center;
 
+  max-height: 100px;
   max-width: 500px;
   margin-top: 16px;
+
+  span {
+    width: 52px;
+    font-size: 12px;
+    color: var(--nevRed);
+  }
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -116,4 +123,12 @@ export const GridType = styled.div`
   @media (max-width: 480px) {
     margin-top: 4px;
   }
+`;
+export const Span = styled.div`
+  width: 100%;
+  height: 10px;
+
+  font-size: 12px;
+  color: var(--nevRed);
+  font-weight: 600;
 `;

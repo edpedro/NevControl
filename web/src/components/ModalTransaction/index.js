@@ -1,5 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
+import { Formik } from 'formik';
+
+import schema from './schema';
 
 import { Context } from '../../Context/Context';
 
@@ -12,6 +15,7 @@ import {
   GridCategoryAccountCard,
   Select,
   GridType,
+  Span,
 } from './styles';
 
 import Button from '../Button';
@@ -19,12 +23,12 @@ import Button from '../Button';
 const recipe = ['Empréstimo', 'Investimento', 'Outra receita', 'Salario'];
 const expense = [
   'Alimentação',
-  ' Assinaturas e serviços',
-  ' Bares e restaurantes',
+  'Assinaturas e serviços',
+  'Bares e restaurantes',
   'Casa',
   'Compras',
   'Cuidados pessoais',
-  ' Dívidas e empréstimos',
+  'Dívidas e empréstimos',
   'Educação',
   'Família e filhos',
   'Impostos e Taxas',
@@ -62,17 +66,10 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
     stateUpdateCreditCard,
   } = useContext(Context);
 
-  const [data, setData] = useState({
-    description: '',
-    value: '',
-    data: '',
-    category: '',
-    operation: '',
-    accountCard: null,
-  });
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    if (updateTransaction) {
+    if (updateTransaction && id) {
       setData(updateTransaction);
     }
   }, [id, updateTransaction]);
@@ -80,14 +77,9 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
   function closeModal() {
     onChange(false);
   }
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setData((data) => ({ ...data, [name]: value, type: option }));
-  }
-  async function handleSubmint(event) {
-    event.preventDefault();
 
-    handleCreateTransaction(data, id);
+  function handleSubmit(values) {
+    handleCreateTransaction(values, id);
 
     stateUpdateCreditCard(true);
 
@@ -104,101 +96,125 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
       >
         <Grid option={option}>
           <h2>Nova {option}</h2>
-          <form onSubmit={handleSubmint}>
-            <GridDescription>
-              <Label htmlFor="description">Descrição</Label>
-              <Input
-                type="text"
-                id="description"
-                name="description"
-                onChange={handleChange}
-                value={data.description || ''}
-              />
-            </GridDescription>
-            <GridValueDate>
-              <div>
-                <Label htmlFor="value">Valor</Label>
-                <Input
-                  type="number"
-                  id="number"
-                  name="value"
-                  width={240}
-                  onChange={handleChange}
-                  value={data.value || false}
-                />
-              </div>
-              <div>
-                <Label htmlFor="data">Data</Label>
-                <Input
-                  type="date"
-                  id="date"
-                  name="data"
-                  width={240}
-                  onChange={handleChange}
-                  value={data.data || ''}
-                />
-              </div>
-            </GridValueDate>
-            <GridCategoryAccountCard>
-              <div>
-                <Label>
-                  Conta/cartão
-                  <Select
-                    name="operation"
+          <Formik
+            enableReinitialize={true}
+            initialValues={{
+              description: data.description || '',
+              value: data.value || '',
+              data: data.data || '',
+              category: data.category || '',
+              operation: data.operation || '',
+              accountCard: data.accountCard || null,
+              type: option,
+            }}
+            onSubmit={handleSubmit}
+            validationSchema={schema}
+          >
+            {({ handleSubmit, handleChange, values, errors }) => (
+              <form onSubmit={handleSubmit}>
+                <GridDescription>
+                  <Label>Descrição</Label>
+                  <Input
+                    type="text"
+                    name="description"
                     onChange={handleChange}
-                    value={data && data.operation}
-                  >
-                    <option value="">Selecione</option>
-                    <option value="conta">Conta</option>
-                    <option value="cartao">Cartão</option>
-                  </Select>
-                </Label>
-              </div>
-              <div>
-                <Label>
-                  Categoria
-                  <Select
-                    name="category"
-                    onChange={handleChange}
-                    value={data.category || false}
-                  >
-                    <option value="">Selecione</option>
-                    {option === 'receita'
-                      ? recipe.map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))
-                      : expense.map((name) => (
-                          <option key={name} value={name}>
-                            {name}
+                    value={values.description}
+                  />
+                  <Span>{errors.description}</Span>
+                </GridDescription>
+                <GridValueDate>
+                  <div>
+                    <Label>Valor</Label>
+                    <Input
+                      type="number"
+                      name="value"
+                      step="0.01"
+                      width={240}
+                      onChange={handleChange}
+                      value={values.value}
+                    />
+
+                    <Span>{errors.value}</Span>
+                  </div>
+                  <div>
+                    <Label>Data</Label>
+                    <Input
+                      type="date"
+                      name="data"
+                      width={240}
+                      onChange={handleChange}
+                      value={values.data}
+                    />
+                    <div>
+                      <Span>{errors.data}</Span>
+                    </div>
+                  </div>
+                </GridValueDate>
+                <GridCategoryAccountCard>
+                  <div>
+                    <Label>
+                      Conta/cartão
+                      <Select
+                        name="operation"
+                        onChange={handleChange}
+                        value={values.operation}
+                      >
+                        <option value="">Selecione</option>
+                        <option value="conta">Conta</option>
+                        {creditCards && creditCards.length > 0 && (
+                          <option value="cartao">Cartão</option>
+                        )}
+                      </Select>
+                      <Span>{errors.operation}</Span>
+                    </Label>
+                  </div>
+                  <div>
+                    <Label>
+                      Categoria
+                      <Select
+                        name="category"
+                        onChange={handleChange}
+                        value={values.category}
+                      >
+                        <option value="">Selecione</option>
+                        {option === 'receita'
+                          ? recipe.map((name) => (
+                              <option key={name} value={name}>
+                                {name}
+                              </option>
+                            ))
+                          : expense.map((name) => (
+                              <option key={name} value={name}>
+                                {name}
+                              </option>
+                            ))}
+                      </Select>
+                      <Span>{errors.category}</Span>
+                    </Label>
+                  </div>
+                </GridCategoryAccountCard>
+                {values.operation === 'cartao' && (
+                  <GridType>
+                    <Label>Bandeira</Label>
+                    <Select
+                      name="accountCard"
+                      width={490}
+                      onChange={handleChange}
+                    >
+                      {creditCards &&
+                        creditCards.map((creditCard) => (
+                          <option key={creditCard._id} value={creditCard._id}>
+                            {creditCard.bank}
                           </option>
                         ))}
-                  </Select>
-                </Label>
-              </div>
-            </GridCategoryAccountCard>
-            {data.operation === 'cartao' && (
-              <GridType>
-                <Label htmlFor="accountCard">Bandeira</Label>
-                <Select
-                  name="accountCard"
-                  id="accountCard"
-                  width={490}
-                  onChange={handleChange}
-                >
-                  <option value="">Selecione</option>
-                  {creditCards &&
-                    creditCards.map((creditCard) => (
-                      <option key={creditCard._id} value={creditCard._id}>
-                        {creditCard.bank}
-                      </option>
-                    ))}
-                </Select>
-              </GridType>
+                    </Select>
+                    <Span>{errors.accountCard}</Span>
+                  </GridType>
+                )}
+                <Button title="Adicionar" />
+              </form>
             )}
-            <Button title="Adicionar" />
-          </form>
+          </Formik>
         </Grid>
       </Modal>
     </>
