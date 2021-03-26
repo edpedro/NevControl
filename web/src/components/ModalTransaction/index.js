@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
-import { Formik } from 'formik';
+import { Formik, Form } from 'formik';
 
 import schema from './schema';
 
@@ -109,9 +109,10 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
             }}
             onSubmit={handleSubmit}
             validationSchema={schema}
+            validateOnChange={false}
           >
-            {({ handleSubmit, handleChange, values, errors }) => (
-              <form onSubmit={handleSubmit}>
+            {({ handleChange, values, errors }) => (
+              <Form>
                 <GridDescription>
                   <Label>Descrição</Label>
                   <Input
@@ -212,7 +213,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                   </GridType>
                 )}
                 <Button title="Adicionar" />
-              </form>
+              </Form>
             )}
           </Formik>
         </Grid>
