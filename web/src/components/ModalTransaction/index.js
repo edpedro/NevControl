@@ -111,7 +111,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
             validationSchema={schema}
             validateOnChange={false}
           >
-            {({ handleChange, values, errors }) => (
+            {({ handleChange, values, errors, handleBlur }) => (
               <Form>
                 <GridDescription>
                   <Label>Descrição</Label>
@@ -120,6 +120,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                     name="description"
                     onChange={handleChange}
                     value={values.description}
+                    onBlur={handleBlur}
                   />
                   <Span>{errors.description}</Span>
                 </GridDescription>
@@ -133,6 +134,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       width={240}
                       onChange={handleChange}
                       value={values.value}
+                      onBlur={handleBlur}
                     />
 
                     <Span>{errors.value}</Span>
@@ -145,6 +147,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       width={240}
                       onChange={handleChange}
                       value={values.data}
+                      onBlur={handleBlur}
                     />
                     <div>
                       <Span>{errors.data}</Span>
@@ -159,6 +162,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                         name="operation"
                         onChange={handleChange}
                         value={values.operation}
+                        onBlur={handleBlur}
                       >
                         <option value="">Selecione</option>
                         <option value="conta">Conta</option>
@@ -176,6 +180,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                         name="category"
                         onChange={handleChange}
                         value={values.category}
+                        onBlur={handleBlur}
                       >
                         <option value="">Selecione</option>
                         {option === 'receita'
@@ -201,6 +206,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       name="accountCard"
                       width={490}
                       onChange={handleChange}
+                      onBlur={handleBlur}
                     >
                       {creditCards &&
                         creditCards.map((creditCard) => (
