@@ -1,7 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Modal from 'react-modal';
+import { Formik, Form } from 'formik';
 
 import { Context } from '../../Context/Context';
+
+import schema from './schema';
 
 import {
   Grid,
@@ -12,6 +15,7 @@ import {
   GridDate,
   Select,
   GridInstitution,
+  Span,
 } from './styles';
 
 import Button from '../Button';
@@ -35,16 +39,10 @@ const customStyles = {
 
 function ModalCard({ isOpen, onChange, id }) {
   const { handleCreateCreditCard, updateCreditCard } = useContext(Context);
-  const [data, setData] = useState({
-    name: '',
-    limit: '',
-    close: '',
-    win: '',
-    bank: '',
-  });
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    if (updateCreditCard) {
+    if (updateCreditCard && id) {
       setData(updateCreditCard);
     }
   }, [id, updateCreditCard]);
@@ -52,15 +50,8 @@ function ModalCard({ isOpen, onChange, id }) {
   function closeModal() {
     onChange(false);
   }
-
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setData((data) => ({ ...data, [name]: value }));
-  }
-  async function handleSubmint(event) {
-    event.preventDefault();
-
-    handleCreateCreditCard(data, id);
+  async function handleSubmit(values) {
+    handleCreateCreditCard(values, id);
 
     onChange(false);
   }
@@ -75,68 +66,91 @@ function ModalCard({ isOpen, onChange, id }) {
       >
         <Grid>
           <h2>Adicionar Cartão de Crédito</h2>
-          <form onSubmit={handleSubmint}>
-            <GridName>
-              <Label htmlFor="name">Nome da conta</Label>
-              <Input
-                type="text"
-                id="name"
-                name="name"
-                onChange={handleChange}
-                value={data.name || ''}
-              />
-            </GridName>
-            <GridLimit>
-              <div>
-                <Label htmlFor="limit">Limite</Label>
-                <Input
-                  type="number"
-                  id="limit"
-                  name="limit"
-                  onChange={handleChange}
-                  value={data.limit || ''}
-                />
-              </div>
-            </GridLimit>
-            <GridDate>
-              <div>
-                <Label htmlFor="close">Fechar dia</Label>
-                <Input
-                  type="month"
-                  id="close"
-                  name="close"
-                  width={240}
-                  onChange={handleChange}
-                />
-              </div>
-              <div>
-                <Label htmlFor="winDay">Vence dia</Label>
-                <Input
-                  type="month"
-                  id="win"
-                  name="win"
-                  width={240}
-                  onChange={handleChange}
-                />
-              </div>
-            </GridDate>
-            <GridInstitution>
-              <Label htmlFor="bank">Bandeira/Instituição</Label>
-              <Select
-                name="bank"
-                id="bank"
-                width={490}
-                onChange={handleChange}
-                value={data.bank || ''}
-              >
-                <option value=""></option>
-                <option value="nubank">Nubank</option>
-                <option value="santander">Santander</option>
-                <option value="itau">itau</option>
-              </Select>
-            </GridInstitution>
-            <Button title="Adicionar" />
-          </form>
+          <Formik
+            enableReinitialize={true}
+            initialValues={{
+              name: data.name || '',
+              limit: data.limit || '',
+              close: data.close || '',
+              win: data.win || '',
+              bank: data.bank || '',
+            }}
+            onSubmit={handleSubmit}
+            validationSchema={schema}
+            validateOnChange={false}
+          >
+            {({ handleChange, values, errors, handleBlur }) => (
+              <Form>
+                <GridName>
+                  <Label>Nome da conta</Label>
+                  <Input
+                    type="text"
+                    name="name"
+                    onChange={handleChange}
+                    value={values.name}
+                    onBlur={handleBlur}
+                  />
+                  <Span>{errors.name}</Span>
+                </GridName>
+                <GridLimit>
+                  <div>
+                    <Label>Limite</Label>
+                    <Input
+                      type="number"
+                      name="limit"
+                      onChange={handleChange}
+                      value={values.limit}
+                      onBlur={handleBlur}
+                    />
+                    <Span>{errors.limit}</Span>
+                  </div>
+                </GridLimit>
+                <GridDate>
+                  <div>
+                    <Label>Fechar dia</Label>
+                    <Input
+                      type="month"
+                      name="close"
+                      width={240}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.close}
+                    />
+                    <Span>{errors.close}</Span>
+                  </div>
+                  <div>
+                    <Label>Vence dia</Label>
+                    <Input
+                      type="month"
+                      name="win"
+                      width={240}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.win}
+                    />
+                    <Span>{errors.win}</Span>
+                  </div>
+                </GridDate>
+                <GridInstitution>
+                  <Label>Bandeira/Instituição</Label>
+                  <Select
+                    name="bank"
+                    width={490}
+                    onChange={handleChange}
+                    value={values.bank}
+                    onBlur={handleBlur}
+                  >
+                    <option value=""></option>
+                    <option value="nubank">Nubank</option>
+                    <option value="santander">Santander</option>
+                    <option value="itau">itau</option>
+                  </Select>
+                  <Span>{errors.bank}</Span>
+                </GridInstitution>
+                <Button title="Adicionar" />
+              </Form>
+            )}
+          </Formik>
         </Grid>
       </Modal>
     </>

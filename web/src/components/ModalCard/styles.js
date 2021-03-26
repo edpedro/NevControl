@@ -39,7 +39,7 @@ export const Label = styled.label`
   }
 `;
 export const GridName = styled.div`
-  margin-top: 40px;
+  margin-top: 20px;
 
   width: 100%;
   max-width: 500px;
@@ -108,7 +108,6 @@ export const Select = styled.select`
 
 export const GridInstitution = styled.div`
   margin-top: 16px;
-  margin-bottom: 16px;
 
   width: 100%;
   max-width: 500px;
@@ -116,4 +115,12 @@ export const GridInstitution = styled.div`
   @media (max-width: 480px) {
     margin-top: 4px;
   }
+`;
+export const Span = styled.div`
+  width: 100%;
+  height: 10px;
+
+  font-size: 12px;
+  color: var(--nevRed);
+  font-weight: 600;
 `;
