@@ -54,6 +54,10 @@ export const Tbody = styled.tbody`
     font-weight: 700;
     font-size: 14px;
 
+    p {
+      text-align: center;
+    }
+
     &:nth-child(2) {
       font-weight: 500;
     }

@@ -30,10 +30,10 @@ function BoxTransaction({ title, validation }) {
 
   useEffect(() => {
     function filterTransactions() {
-      const newUsers = Object.values(transactions).filter(
+      const result = Object.values(transactions).filter(
         (transaction) => transaction.operation === validation
       );
-      setDatas(newUsers);
+      setDatas(result);
     }
     filterTransactions();
   }, [validation, transactions]);
@@ -58,7 +58,7 @@ function BoxTransaction({ title, validation }) {
     <>
       <Container>
         <Header>
-          <h2>{transactions && transactions.length > 0 && title}</h2>
+          <h2>{title}</h2>
         </Header>
         <Grid>
           <Table>
