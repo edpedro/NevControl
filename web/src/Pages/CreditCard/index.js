@@ -23,7 +23,7 @@ function CreditCard() {
       <Grid>
         <BoxTransaction
           title="Historico Cartão de credito"
-          validation={false}
+          validation="cartao"
         />
         <QuickAccess wsmall={400} hsmall={200} />
       </Grid>

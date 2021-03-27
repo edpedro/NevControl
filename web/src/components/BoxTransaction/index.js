@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 
 import { Context } from '../../Context/Context';
 
@@ -26,6 +26,18 @@ function BoxTransaction({ title, validation }) {
     stateUpdateCreditCard,
   } = useContext(Context);
 
+  const [datas, setDatas] = useState({});
+
+  useEffect(() => {
+    function filterTransactions() {
+      const newUsers = Object.values(transactions).filter(
+        (transaction) => transaction.operation === validation
+      );
+      setDatas(newUsers);
+    }
+    filterTransactions();
+  }, [validation, transactions]);
+
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOpen] = useState('');
   const [id, setId] = useState('');
@@ -41,6 +53,7 @@ function BoxTransaction({ title, validation }) {
     handleRemoveTransaction(id);
     stateUpdateCreditCard(true);
   }
+
   return (
     <>
       <Container>
@@ -49,74 +62,34 @@ function BoxTransaction({ title, validation }) {
         </Header>
         <Grid>
           <Table>
-            {transactions && transactions.length > 0 ? (
-              transactions.map((transaction, key) => (
+            {datas && datas.length > 0 ? (
+              datas.map((transaction, key) => (
                 <Tbody key={key}>
                   <tr
                     className={transaction.type === 'despesa' ? 'active' : ''}
                   >
-                    {validation
-                      ? transaction.operation === 'conta' && (
-                          <>
-                            <td>{FormatDate(transaction.data)}</td>
-                            <td>{FormatUppercase(transaction.operation)}</td>
-                            <td>{transaction.category}</td>
-                            <td>
-                              R${' '}
-                              {transaction.type === 'despesa'
-                                ? '-' + FormatCurrency(transaction.value)
-                                : '+' + FormatCurrency(transaction.value)}
-                            </td>
-                            <td>
-                              <IconEdit
-                                onClick={() =>
-                                  handleIsOpen(
-                                    transaction.type,
-                                    transaction._id
-                                  )
-                                }
-                              />{' '}
-                              -{' '}
-                              <IconDelet
-                                onClick={() => {
-                                  handleRemove(transaction._id);
-                                }}
-                              />
-                            </td>
-                          </>
-                        )
-                      : transaction.operation === 'cartao' && (
-                          <>
-                            <td>{FormatDate(transaction.data)}</td>
-                            <td>
-                              {transaction.accountCard &&
-                                FormatUppercase(transaction.accountCard.bank)}
-                            </td>
-                            <td>{transaction.category}</td>
-                            <td>
-                              R${' '}
-                              {transaction.type === 'despesa'
-                                ? '-' + FormatCurrency(transaction.value)
-                                : '+' + FormatCurrency(transaction.value)}
-                            </td>
-                            <td>
-                              <IconEdit
-                                onClick={() =>
-                                  handleIsOpen(
-                                    transaction.type,
-                                    transaction._id
-                                  )
-                                }
-                              />
-                              -{' '}
-                              <IconDelet
-                                onClick={() => {
-                                  handleRemove(transaction._id);
-                                }}
-                              />
-                            </td>
-                          </>
-                        )}
+                    <td>{FormatDate(transaction.data)}</td>
+                    <td>{FormatUppercase(transaction.operation)}</td>
+                    <td>{transaction.category}</td>
+                    <td>
+                      R${' '}
+                      {transaction.type === 'despesa'
+                        ? '-' + FormatCurrency(transaction.value)
+                        : '+' + FormatCurrency(transaction.value)}
+                    </td>
+                    <td>
+                      <IconEdit
+                        onClick={() =>
+                          handleIsOpen(transaction.type, transaction._id)
+                        }
+                      />{' '}
+                      -{' '}
+                      <IconDelet
+                        onClick={() => {
+                          handleRemove(transaction._id);
+                        }}
+                      />
+                    </td>
                   </tr>
                 </Tbody>
               ))
