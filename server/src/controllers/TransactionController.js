@@ -34,7 +34,7 @@ module.exports = {
       const transaction = await Transactions.createTransactions(
         type,
         description,
-        parseInt(value),
+        value,
         data,
         category,
         operation,
