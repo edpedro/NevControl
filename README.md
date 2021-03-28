@@ -1,16 +1,18 @@
 ## PROJETO - CONTROLE FINANCEIRO PESSOAL
 
-## Bank-end em desenvolvimento...
+## Site em desenvolvimento...
 
 ---
 
 ### Demonstração do site
 
+https://nev-front.herokuapp.com/
+
 <h1 align="center">
     <img src="./assets/video.gif">
 </h1>
 
-Sistema foi desenhado para facilitar controle de todos os gastos pessoas, tanto cartão de cretido como fora, intuito e com poucos clique ter o controle do dinheiro.
+Sistema foi desenhado para facilitar controle de todos os gastos pessoas, tanto cartão de credito como conta, intuito e com poucos clique ter o controle do dinheiro.
 
 ## Tecnologias Usadas:
 
@@ -19,7 +21,19 @@ Reactjs :
 - react-router-dom,
 - styled-components,
 - react-modal,
-- styled-icons
+- styled-icons,
+- formik,
+- yup,
+- react-toastify
+
+Node js :
+
+- bcrypt,
+- bcryptjs,
+- express,
+- jsonwebtoken,
+- mongoose,
+- morgan
 
 ---
 
@@ -29,14 +43,15 @@ Reactjs :
 #Clona repositório
 $ git clone https://github.com/edpedro/NevControl.git
 
-#Entra no diretório
-$ cd web
+#Entra nos diretórios
+$ cd NevControl
 
-#Entra nas pasta Frontend e instalar dependência
+#Entra nas pasta web e server, instalar dependência
 $ yarn
 
 #Inicia o projeto
-$ yarn start
+$ yarn start - web
+$ yarn dev - server
 
 ```
 
