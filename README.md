@@ -18,6 +18,8 @@ Sistema foi desenhado para facilitar controle de todos os gastos pessoas, tanto 
 
 Reactjs :
 
+- Context Api,
+- Axios,
 - react-router-dom,
 - styled-components,
 - react-modal,
