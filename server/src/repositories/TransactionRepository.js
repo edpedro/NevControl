@@ -30,6 +30,7 @@ module.exports = {
     const transaction = await Transaction.find({ user: userId })
       .populate({ path: "user", select: "name" })
       .populate({ path: "accountCard", select: ["name", "limit", "bank"] })
+      .sort({ data: "desc" })
       .exec();
 
     const { accountBalance, negativeBalance } = transaction.reduce(
