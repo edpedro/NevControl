@@ -25,6 +25,7 @@ function Card({ creditCard }) {
     stateUpdateCreditCard,
     stateUpdateTransaction,
   } = useContext(Context);
+
   const [isOpen, setIsOpen] = useState(false);
   const [id, setId] = useState('');
 
