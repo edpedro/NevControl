@@ -53,7 +53,7 @@ function TransactionContext() {
 
       toast.success(message);
     } catch (error) {
-      toast.success(error.response.data);
+      toast.error(error.response.data);
     }
   }, []);
 
@@ -69,7 +69,7 @@ function TransactionContext() {
 
       toast.success('Transação deletada com sucesso!');
     } catch (error) {
-      toast.success(error.response);
+      toast.error(error.response);
     }
   }, []);
   const handleShowTransaction = useCallback(async (id) => {
@@ -82,7 +82,7 @@ function TransactionContext() {
       });
       setUpdateTransaction(data);
     } catch (error) {
-      console.log(error.response);
+      toast.error(error.response);
     }
   }, []);
 
