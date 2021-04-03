@@ -81,7 +81,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
   }
 
   function handleSubmit(values) {
-    console.log(values);
     if (
       values.operation === 'cartao' &&
       (values.accountCard === null || values.accountCard === '')

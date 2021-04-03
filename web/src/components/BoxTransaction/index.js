@@ -13,9 +13,14 @@ function BoxTransaction({ title, validation }) {
 
   useEffect(() => {
     function filterTransactions() {
+      if (!validation) {
+        setDatas(transactions);
+        return;
+      }
       const result = Object.values(transactions).filter(
         (transaction) => transaction.operation === validation
       );
+
       setDatas(result);
     }
     filterTransactions();
