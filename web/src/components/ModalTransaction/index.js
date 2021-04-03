@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import Modal from 'react-modal';
 import { Formik, Form } from 'formik';
 
@@ -19,6 +20,7 @@ import {
 } from './styles';
 
 import Button from '../Button';
+import { TruckFlatbed } from '@styled-icons/bootstrap';
 
 const recipe = ['Empréstimo', 'Investimento', 'Outra receita', 'Salario'];
 const expense = [
@@ -79,6 +81,15 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
   }
 
   function handleSubmit(values) {
+    console.log(values);
+    if (
+      values.operation === 'cartao' &&
+      (values.accountCard === null || values.accountCard === '')
+    ) {
+      onChange(true);
+      toast.error('Favor preencher campo Bandeira');
+      return;
+    }
     handleCreateTransaction(values, id);
 
     stateUpdateCreditCard(true);
@@ -111,7 +122,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
             validationSchema={schema}
             validateOnChange={false}
           >
-            {({ handleChange, values, errors, handleBlur }) => (
+            {({ handleChange, values, errors }) => (
               <Form>
                 <GridDescription>
                   <Label>Descrição</Label>
@@ -120,7 +131,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                     name="description"
                     onChange={handleChange}
                     value={values.description}
-                    onBlur={handleBlur}
                   />
                   <Span>{errors.description}</Span>
                 </GridDescription>
@@ -134,7 +144,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       width={240}
                       onChange={handleChange}
                       value={values.value}
-                      onBlur={handleBlur}
                     />
 
                     <Span>{errors.value}</Span>
@@ -147,7 +156,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       width={240}
                       onChange={handleChange}
                       value={values.data}
-                      onBlur={handleBlur}
                     />
                     <div>
                       <Span>{errors.data}</Span>
@@ -162,7 +170,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                         name="operation"
                         onChange={handleChange}
                         value={values.operation}
-                        onBlur={handleBlur}
                       >
                         <option value="">Selecione</option>
                         <option value="conta">Conta</option>
@@ -180,7 +187,6 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                         name="category"
                         onChange={handleChange}
                         value={values.category}
-                        onBlur={handleBlur}
                       >
                         <option value="">Selecione</option>
                         {option === 'receita'
@@ -206,8 +212,8 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
                       name="accountCard"
                       width={490}
                       onChange={handleChange}
-                      onBlur={handleBlur}
                     >
+                      <option value="">Selecione</option>
                       {creditCards &&
                         creditCards.map((creditCard) => (
                           <option key={creditCard._id} value={creditCard._id}>

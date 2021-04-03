@@ -33,7 +33,7 @@ module.exports = {
           .populate({ path: "user", select: "name" })
           .populate({ path: "accountCard", select: ["name", "limit"] })
           .exec();
-
+        console.log(transactions);
         transactions.map((transaction) => {
           if (transaction.type === "receita") {
             creditCard.cardBalance -= transaction.value;
