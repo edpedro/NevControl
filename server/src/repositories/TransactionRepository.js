@@ -1,4 +1,5 @@
 const Transaction = require("../models/Transaction");
+const Filter = require("../utils/FilterTransactions");
 
 module.exports = {
   async createTransactions(
@@ -26,14 +27,16 @@ module.exports = {
 
     return transaction;
   },
-  async getBalance(userId) {
-    const transaction = await Transaction.find({ user: userId })
+  async getBalance(userId, month) {
+    const transactions = await Transaction.find({ user: userId })
       .populate({ path: "user", select: "name" })
       .populate({ path: "accountCard", select: ["name", "limit", "bank"] })
       .sort({ data: "desc" })
       .exec();
 
-    const { accountBalance, negativeBalance } = transaction.reduce(
+    const result = await Filter.filterTransactions(transactions, month);
+
+    const { accountBalance, negativeBalance } = result.reduce(
       (acc, curret) => {
         switch (curret.type) {
           case "receita":
@@ -60,6 +63,7 @@ module.exports = {
         currentBalance: 0,
       }
     );
+
     const currentBalance = accountBalance - negativeBalance;
     return {
       balance: {
@@ -67,7 +71,7 @@ module.exports = {
         negativeBalance,
         currentBalance,
       },
-      data: transaction,
+      data: result,
     };
   },
   async updateTransaction(

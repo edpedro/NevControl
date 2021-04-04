@@ -2,7 +2,9 @@ const Transactions = require("../repositories/TransactionRepository");
 
 module.exports = {
   async index(req, res) {
-    const data = await Transactions.getBalance(req.userData._id);
+    const { month } = req.query;
+
+    const data = await Transactions.getBalance(req.userData._id, month);
 
     return res.status(200).json(data);
   },
