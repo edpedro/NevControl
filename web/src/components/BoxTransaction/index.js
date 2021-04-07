@@ -7,6 +7,7 @@ import FormatUppercase from '../../utils/FormatUppercase';
 import FormatDate from '../../utils/FormatDate';
 
 import ModalTransaction from '../ModalTransaction';
+import Loading from '../Loading';
 
 import {
   Container,
@@ -102,6 +103,9 @@ function BoxTransaction({ title, validation }) {
     setDateCurrent(value);
     handleMonthCurrent(monthConvert);
   }
+  if (!datas) {
+    return <Loading />;
+  }
   return (
     <>
       <Container>
@@ -158,7 +162,7 @@ function BoxTransaction({ title, validation }) {
               <Tbody>
                 <tr>
                   <td>
-                    <p className="notTran">Sem lançamentos em {dateCurrent}</p>
+                    <p className="notTran">Sem lançamentos {dateCurrent}</p>
                   </td>
                 </tr>
               </Tbody>
