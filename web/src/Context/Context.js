@@ -23,6 +23,7 @@ function Provider({ children }) {
     handleShowTransaction,
     updateTransaction,
     stateUpdateTransaction,
+    handleMonthCurrent,
   } = TransactionContext();
 
   const {
@@ -56,6 +57,7 @@ function Provider({ children }) {
         updateCreditCard,
         handleRemoveCreditCard,
         stateUpdateTransaction,
+        handleMonthCurrent,
       }}
     >
       {children}

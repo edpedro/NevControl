@@ -9,6 +9,7 @@ function TransactionContext() {
   const [createTransaction, setCreateTransaction] = useState();
   const [updateTransaction, setUpdateTransaction] = useState({});
   const [update, setUpdate] = useState(false);
+  const [monthCurrent, setMonthCurrent] = useState('');
 
   const token = localStorage.getItem('token');
 
@@ -16,7 +17,7 @@ function TransactionContext() {
     async function getTransaction() {
       const {
         data: { balance, data },
-      } = await api.get('/transacao', {
+      } = await api.get(`/transacao?month=${monthCurrent}`, {
         headers: {
           Authorization: JSON.parse(token),
         },
@@ -27,10 +28,14 @@ function TransactionContext() {
       setUpdate(false);
     }
     getTransaction();
-  }, [createTransaction, update, token]);
+  }, [createTransaction, update, token, monthCurrent]);
 
   const stateUpdateTransaction = (state) => {
     setUpdate(state);
+  };
+
+  const handleMonthCurrent = (value) => {
+    setMonthCurrent(value);
   };
 
   const handleCreateTransaction = useCallback(async (useData, id) => {
@@ -94,6 +99,7 @@ function TransactionContext() {
     handleShowTransaction,
     updateTransaction,
     stateUpdateTransaction,
+    handleMonthCurrent,
   };
 }
 
