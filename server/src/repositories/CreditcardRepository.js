@@ -1,6 +1,8 @@
 const CreditCard = require("../models/CreditCard");
 const Transaction = require("../models/Transaction");
 
+const Filter = require("../utils/FilterTransactions");
+
 module.exports = {
   async createCreditCard(name, limit, close, win, bank, userId) {
     const credit = await CreditCard.findOne({ bank: bank }).exec();
@@ -22,10 +24,10 @@ module.exports = {
 
     return creditCard;
   },
-  async getCreditCard(userId) {
+  async getCreditCard(userId, month) {
     const creditCards = await CreditCard.find({ user: userId }).exec();
 
-    const teste = Promise.all(
+    const creditsResult = Promise.all(
       creditCards.map(async (creditCard) => {
         const transactions = await Transaction.find({
           accountCard: creditCard._id,
@@ -34,7 +36,9 @@ module.exports = {
           .populate({ path: "accountCard", select: ["name", "limit"] })
           .exec();
 
-        transactions.map((transaction) => {
+        const result = await Filter.filterTransactions(transactions, month);
+
+        result.map((transaction) => {
           if (transaction.type === "receita") {
             creditCard.cardBalance -= transaction.value;
           } else {
@@ -46,7 +50,7 @@ module.exports = {
       })
     );
 
-    return teste;
+    return creditsResult;
   },
   async updateCreditCard(name, limit, close, win, bank, id) {
     const creditCard = await CreditCard.findById(id).exec();

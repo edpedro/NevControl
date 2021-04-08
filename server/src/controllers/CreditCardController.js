@@ -1,8 +1,11 @@
 const creditCardRepository = require("../repositories/CreditcardRepository");
 module.exports = {
   async index(req, res) {
+    const { month } = req.query;
+
     const creditCard = await creditCardRepository.getCreditCard(
-      req.userData._id
+      req.userData._id,
+      month
     );
 
     return res.status(200).json({ creditCard });
