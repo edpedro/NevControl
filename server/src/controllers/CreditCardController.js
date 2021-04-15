@@ -12,9 +12,10 @@ module.exports = {
   },
   async show(req, res) {
     const { id } = req.params;
+    const { month } = req.query;
 
     try {
-      const data = await creditCardRepository.getCreditCardId(id);
+      const data = await creditCardRepository.getCreditCardId(id, month);
 
       return res.status(200).json(data);
     } catch (err) {

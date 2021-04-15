@@ -1,3 +1,5 @@
+const moment = require("moment");
+
 const CreditCard = require("../models/CreditCard");
 const Transaction = require("../models/Transaction");
 
@@ -91,13 +93,35 @@ module.exports = {
 
     return restul;
   },
-  async getCreditCardId(id) {
+  async getCreditCardId(id, month) {
+    const dateCurrent = new Date();
+
+    const monthCurrent = moment(
+      dateCurrent,
+      "YYYY-MM-DDTHH:mm:ss.SSS[Z]"
+    ).format("MM");
+    const year = moment(dateCurrent, "YYYY-MM-DDTHH:mm:ss.SSS[Z]").format(
+      "YYYY"
+    );
+    const monthNext = month ? parseInt(month) + 1 : monthCurrent;
+
     const creditCards = await CreditCard.findById(id).exec();
 
     if (!creditCards) {
       return { error: "Cartão de credito não encontrado!" };
     }
 
-    return creditCards;
+    const gte = `${year}-${month}-${creditCards.close}`;
+    const lte = `${year}-${"0" + monthNext}-${creditCards.close}`;
+
+    const transactions = await Transaction.find({
+      accountCard: creditCards._id,
+      data: {
+        $gte: gte,
+        $lte: lte,
+      },
+    }).exec();
+
+    return transactions;
   },
 };
