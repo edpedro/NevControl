@@ -11,7 +11,6 @@ export const Container = styled.div`
   margin-left: 10px;
   margin-bottom: 10px;
   background: var(--white);
-  cursor: pointer;
 `;
 export const Header = styled.div`
   display: flex;
@@ -54,7 +53,7 @@ export const Limit = styled.div`
   display: flex;
   justify-content: space-between;
 
-  padding: 10px 20px;
+  padding: 5px 20px;
 
   > h4 {
     color: var(--secondary);
@@ -85,4 +84,16 @@ export const IconDelet = styled(DeleteBack2)`
   height: 18px;
   fill: var(--nevRed);
   cursor: pointer;
+`;
+export const TextInvoice = styled.div`
+  display: flex;
+
+  padding: 4px 20px;
+
+  p {
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--nevRed);
+    cursor: pointer;
+  }
 `;

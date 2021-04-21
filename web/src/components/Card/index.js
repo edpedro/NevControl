@@ -11,9 +11,11 @@ import {
   IconGrid,
   IconEdit,
   IconDelet,
+  TextInvoice,
 } from './styles.js';
 
 import ModalCard from '../ModalCard';
+import ModalInvoiceCard from '../ModalInvoiceCard';
 
 import FormatUppercase from '../../utils/FormatUppercase';
 import FormatCurrency from '../../utils/FormatCurrency';
@@ -26,18 +28,31 @@ function Card({ creditCard }) {
     stateUpdateTransaction,
   } = useContext(Context);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [isOpenInv, setIsOpenInv] = useState(false);
   const [id, setId] = useState('');
+  const [option, setOpen] = useState('');
 
-  function handleIsOpen(id) {
-    setIsOpen(!isOpen);
-    setId(id);
-    handleShowCreditCard(id);
-  }
+  // function handleIsOpen(id) {
+  //   setIsOpen(!isOpen);
+  //   setId(id);
+  //   handleShowCreditCard(id);
+  // }
   function handleRemove(id) {
     handleRemoveCreditCard(id);
     stateUpdateCreditCard(true);
     stateUpdateTransaction(true);
+  }
+  function handleIsOpenEdit(option, id) {
+    setOpen(option);
+    setIsOpenEdit(!isOpenEdit);
+    setId(id);
+    handleShowCreditCard(id);
+  }
+  function handleIsOpenInvoice(option, id) {
+    setOpen(option);
+    setIsOpenInv(!isOpenInv);
+    setId(id);
   }
   return (
     <>
@@ -45,7 +60,7 @@ function Card({ creditCard }) {
         <Header>
           <h3>{creditCard && FormatUppercase(creditCard.bank)}</h3>
           <IconGrid>
-            <IconEdit onClick={() => handleIsOpen(creditCard._id)} />
+            <IconEdit onClick={() => handleIsOpenEdit(creditCard._id)} />
 
             <IconDelet
               onClick={() => {
@@ -74,12 +89,23 @@ function Card({ creditCard }) {
               </span>
             </p>
           </Limit>
+          <TextInvoice onClick={() => handleIsOpenInvoice()}>
+            <p>Ver Fatura</p>
+          </TextInvoice>
         </Main>
       </Container>
-      {isOpen && (
+      {isOpenEdit && (
         <ModalCard
-          isOpen={isOpen}
-          onChange={(isOpen) => setIsOpen(isOpen)}
+          isOpen={isOpenEdit}
+          onChange={(isOpenEdit) => setIsOpenEdit(isOpenEdit)}
+          id={id}
+        />
+      )}
+      {isOpenInv && (
+        <ModalInvoiceCard
+          option={option}
+          isOpen={isOpenInv}
+          onChange={(isOpenInv) => setIsOpenInv(isOpenInv)}
           id={id}
         />
       )}
