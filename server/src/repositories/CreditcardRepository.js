@@ -93,7 +93,7 @@ module.exports = {
 
     return restul;
   },
-  async getCreditCardId(id, month) {
+  async getCreditCardIdInvoice(id, month) {
     const dateCurrent = new Date();
 
     const monthCurrent = moment(
@@ -123,5 +123,14 @@ module.exports = {
     }).exec();
 
     return transactions;
+  },
+  async getCreditCardId(id) {
+    const creditCards = await CreditCard.findById(id).exec();
+
+    if (!creditCards) {
+      return { error: "Cartão de credito não encontrado!" };
+    }
+
+    return creditCards;
   },
 };
