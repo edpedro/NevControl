@@ -8,14 +8,15 @@ module.exports = {
     return res.status(200).json({ creditCard });
   },
   async showInvoce(req, res) {
+    const { id } = req.params;
     const { month } = req.query;
 
-    const creditCard = await creditCardRepository.getCreditCard(
-      req.userData._id,
+    const creditCard = await creditCardRepository.getCreditCardIdInvoice(
+      id,
       month
     );
 
-    return res.status(200).json({ creditCard });
+    return res.status(200).json(creditCard);
   },
   async show(req, res) {
     const { id } = req.params;

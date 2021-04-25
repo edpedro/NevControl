@@ -103,7 +103,10 @@ module.exports = {
     const year = moment(dateCurrent, "YYYY-MM-DDTHH:mm:ss.SSS[Z]").format(
       "YYYY"
     );
-    const monthNext = month ? parseInt(month) + 1 : monthCurrent;
+
+    const newMonth = month ? month : monthCurrent;
+
+    const monthNext = month ? parseInt(month) + 1 : parseInt(monthCurrent) + 1;
 
     const creditCards = await CreditCard.findById(id).exec();
 
@@ -111,7 +114,7 @@ module.exports = {
       return { error: "Cartão de credito não encontrado!" };
     }
 
-    const gte = `${year}-${month}-${creditCards.close}`;
+    const gte = `${year}-${newMonth}-${creditCards.close}`;
     const lte = `${year}-${"0" + monthNext}-${creditCards.close}`;
 
     const transactions = await Transaction.find({
@@ -122,7 +125,15 @@ module.exports = {
       },
     }).exec();
 
-    return transactions;
+    transactions.map((transaction) => {
+      if (transaction.type === "receita") {
+        creditCards.cardBalance -= transaction.value;
+      } else {
+        creditCards.cardBalance += transaction.value;
+      }
+    });
+
+    return { transactions, creditCards };
   },
   async getCreditCardId(id) {
     const creditCards = await CreditCard.findById(id).exec();
