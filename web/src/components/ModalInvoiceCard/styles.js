@@ -161,7 +161,7 @@ export const Select = styled.select`
   option {
   }
   @media (max-width: 480px) {
-    width: 350px;
-    padding: 6px 16px 14px 16px;
+    width: 200px;
+    padding: 6px 14px 8px 16px;
   }
 `;

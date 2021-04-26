@@ -7,6 +7,7 @@ function CreditCardContext() {
   const [creditCards, setCreditCards] = useState([]);
   const [createCreditCard, setCreateCreditCard] = useState({});
   const [updateCreditCard, setUpdateCreditCard] = useState({});
+  const [invoceCreditCard, setInvoceCreditCard] = useState({});
   const [update, setUpdate] = useState(false);
 
   const token = localStorage.getItem('token');
@@ -62,7 +63,24 @@ function CreditCardContext() {
           Authorization: JSON.parse(token),
         },
       });
+
       setUpdateCreditCard(data);
+    } catch (error) {
+      console.log(error.response);
+    }
+  }, []);
+  const handleShowInvoceCreditCard = useCallback(async (id, month) => {
+    const token = localStorage.getItem('token');
+    const query = month ? `?month=${month}` : '';
+
+    try {
+      const { data } = await api.get(`/creditcard/invoce/${id}${query}`, {
+        headers: {
+          Authorization: JSON.parse(token),
+        },
+      });
+
+      setInvoceCreditCard(data);
     } catch (error) {
       console.log(error.response);
     }
@@ -90,6 +108,8 @@ function CreditCardContext() {
     handleShowCreditCard,
     updateCreditCard,
     handleRemoveCreditCard,
+    handleShowInvoceCreditCard,
+    invoceCreditCard,
   };
 }
 

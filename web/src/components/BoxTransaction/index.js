@@ -111,15 +111,23 @@ function BoxTransaction({ title, validation }) {
       <Container>
         <Header>
           <div>
-            <Label>Filtrar</Label>
-            <Select name="month" onChange={handleChange} value={dateCurrent}>
-              <option value="">Selecione...</option>
-              {month.map((name) => (
-                <option value={name} key={name}>
-                  {name}
-                </option>
-              ))}
-            </Select>
+            {validation && validation !== 'cartao' && (
+              <>
+                <Label>Filtrar</Label>
+                <Select
+                  name="month"
+                  onChange={handleChange}
+                  value={dateCurrent}
+                >
+                  <option value="">Selecione...</option>
+                  {month.map((name) => (
+                    <option value={name} key={name}>
+                      {name}
+                    </option>
+                  ))}
+                </Select>
+              </>
+            )}
           </div>
           <div>
             <h2>{title}</h2>

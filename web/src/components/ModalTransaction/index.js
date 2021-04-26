@@ -20,7 +20,6 @@ import {
 } from './styles';
 
 import Button from '../Button';
-import { TruckFlatbed } from '@styled-icons/bootstrap';
 
 const recipe = ['Empréstimo', 'Investimento', 'Outra receita', 'Salario'];
 const expense = [

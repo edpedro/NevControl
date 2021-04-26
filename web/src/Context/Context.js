@@ -33,6 +33,8 @@ function Provider({ children }) {
     handleShowCreditCard,
     updateCreditCard,
     handleRemoveCreditCard,
+    handleShowInvoceCreditCard,
+    invoceCreditCard,
   } = CreditCardContext();
 
   return (
@@ -58,6 +60,8 @@ function Provider({ children }) {
         handleRemoveCreditCard,
         stateUpdateTransaction,
         handleMonthCurrent,
+        handleShowInvoceCreditCard,
+        invoceCreditCard,
       }}
     >
       {children}

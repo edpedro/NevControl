@@ -1,5 +1,12 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import moment from 'moment';
+
+import { Context } from '../../Context/Context';
+
+import FormatUppercase from '../../utils/FormatUppercase';
+import FormatCurrency from '../../utils/FormatCurrency';
+import FormatDate from '../../utils/FormatDate';
 
 import {
   Grid,
@@ -45,10 +52,35 @@ const customStyles = {
   },
 };
 
-function ModalInvoiceCard({ isOpen, onChange }) {
+function ModalInvoiceCard({ isOpen, onChange, data }) {
+  const { invoceCreditCard, handleShowInvoceCreditCard } = useContext(Context);
+
+  const { creditCards, transactions } = invoceCreditCard;
+
+  const [monthCurrent, setMonthCurrent] = useState('');
+  const [dateCurrent, setDateCurrent] = useState('');
+
   function closeModal() {
     onChange(false);
   }
+
+  useEffect(() => {
+    const dateCurrent = new Date();
+
+    const month = moment(dateCurrent, 'YYYY-MM-DDTHH:mm:ss.SSS[Z]').format(
+      'MMMM'
+    );
+
+    setMonthCurrent(month);
+  }, []);
+
+  function handleChange(event) {
+    const { value } = event.target;
+    const monthConvert = moment().month(value).format('MM');
+    handleShowInvoceCreditCard(creditCards._id, monthConvert);
+    setDateCurrent(value);
+  }
+
   return (
     <>
       <Modal
@@ -59,7 +91,7 @@ function ModalInvoiceCard({ isOpen, onChange }) {
       >
         <Grid>
           <h2>Fatura do cartão</h2>
-          <Select name="month">
+          <Select name="month" onChange={handleChange}>
             <option value="">Selecione...</option>
             {month.map((name) => (
               <option value={name} key={name}>
@@ -68,30 +100,51 @@ function ModalInvoiceCard({ isOpen, onChange }) {
             ))}
           </Select>
           <Header>
-            <p>Santander</p>
+            <p>{data && FormatUppercase(data.bank)}</p>
             <p>|</p>
-            <span>Maio 2021</span>
+            <span>{dateCurrent ? dateCurrent : monthCurrent} 2021</span>
           </Header>
           <Body>
             <Balance>
               <p>Valor da fatura:</p>
-              <span>R$ 250,00</span>
+              <span>
+                R$ {creditCards && FormatCurrency(creditCards.cardBalance)}
+              </span>
             </Balance>
             <Vencimen>
               <p>Vecimento</p>
-              <span>17/05/2021</span>
+              <span>{creditCards && creditCards.win}</span>
             </Vencimen>
           </Body>
           <Transactions>
             <Table>
-              <Tbody>
-                <tr className="active">
-                  <td>16/04/2021</td>
-                  <td>Cartão</td>
-                  <td>Alimento</td>
-                  <td>R$ 160</td>
-                </tr>
-              </Tbody>
+              {transactions && transactions.length > 0 ? (
+                transactions.map((transaction, key) => (
+                  <Tbody key={key}>
+                    <tr
+                      className={transaction.type === 'despesa' ? 'active' : ''}
+                    >
+                      <td>{FormatDate(transaction.data)}</td>
+                      <td>{FormatUppercase(transaction.operation)}</td>
+                      <td>{transaction.category}</td>
+                      <td>
+                        R${' '}
+                        {transaction.type === 'despesa'
+                          ? '-' + FormatCurrency(transaction.value)
+                          : '+' + FormatCurrency(transaction.value)}
+                      </td>
+                    </tr>
+                  </Tbody>
+                ))
+              ) : (
+                <Tbody>
+                  <tr>
+                    <td>
+                      <p className="notTran">Sem lançamentos {dateCurrent}</p>
+                    </td>
+                  </tr>
+                </Tbody>
+              )}
             </Table>
           </Transactions>
         </Grid>

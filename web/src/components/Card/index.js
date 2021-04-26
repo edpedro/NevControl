@@ -26,12 +26,13 @@ function Card({ creditCard }) {
     handleRemoveCreditCard,
     stateUpdateCreditCard,
     stateUpdateTransaction,
+    handleShowInvoceCreditCard,
   } = useContext(Context);
 
   const [isOpenEdit, setIsOpenEdit] = useState(false);
   const [isOpenInv, setIsOpenInv] = useState(false);
   const [id, setId] = useState('');
-  const [option, setOpen] = useState('');
+  const [data, setData] = useState({});
 
   // function handleIsOpen(id) {
   //   setIsOpen(!isOpen);
@@ -43,16 +44,16 @@ function Card({ creditCard }) {
     stateUpdateCreditCard(true);
     stateUpdateTransaction(true);
   }
-  function handleIsOpenEdit(option, id) {
-    setOpen(option);
+  function handleIsOpenEdit(id) {
     setIsOpenEdit(!isOpenEdit);
     setId(id);
     handleShowCreditCard(id);
   }
-  function handleIsOpenInvoice(option, id) {
-    setOpen(option);
+  function handleIsOpenInvoice(data) {
     setIsOpenInv(!isOpenInv);
-    setId(id);
+    setId(data._id);
+    handleShowInvoceCreditCard(data._id);
+    setData(data);
   }
   return (
     <>
@@ -89,7 +90,7 @@ function Card({ creditCard }) {
               </span>
             </p>
           </Limit>
-          <TextInvoice onClick={() => handleIsOpenInvoice()}>
+          <TextInvoice onClick={() => handleIsOpenInvoice(creditCard)}>
             <p>Ver Fatura</p>
           </TextInvoice>
         </Main>
@@ -103,10 +104,10 @@ function Card({ creditCard }) {
       )}
       {isOpenInv && (
         <ModalInvoiceCard
-          option={option}
           isOpen={isOpenInv}
           onChange={(isOpenInv) => setIsOpenInv(isOpenInv)}
           id={id}
+          data={data}
         />
       )}
     </>
