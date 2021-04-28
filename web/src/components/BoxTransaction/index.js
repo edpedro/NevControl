@@ -7,6 +7,7 @@ import FormatUppercase from '../../utils/FormatUppercase';
 import FormatDate from '../../utils/FormatDate';
 
 import ModalTransaction from '../ModalTransaction';
+import ModalDescriptionTransaction from '../ModalDescriptionTransaction';
 import Loading from '../Loading';
 
 import {
@@ -65,7 +66,8 @@ function BoxTransaction({ title, validation }) {
   const [datas, setDatas] = useState({});
   const [dateCurrent, setDateCurrent] = useState('');
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenTran, setIsOpenTran] = useState(false);
+  const [isOpenDes, setIsOpenDes] = useState(false);
   const [option, setOpen] = useState('');
   const [id, setId] = useState('');
 
@@ -84,11 +86,16 @@ function BoxTransaction({ title, validation }) {
     filterTransactions();
   }, [validation, transactions]);
 
-  function handleIsOpen(option, id) {
+  function handleIsOpenTran(option, id) {
     setOpen(option);
-    setIsOpen(!isOpen);
+    setIsOpenTran(!isOpenTran);
     setId(id);
     handleShowTransaction(id);
+  }
+  function handleIsOpenDes(option) {
+    setOpen(option);
+    setIsOpenDes(!isOpenDes);
+    setId(id);
   }
 
   function handleRemove(id) {
@@ -106,6 +113,7 @@ function BoxTransaction({ title, validation }) {
   if (!datas) {
     return <Loading />;
   }
+
   return (
     <>
       <Container>
@@ -142,7 +150,9 @@ function BoxTransaction({ title, validation }) {
                     className={transaction.type === 'despesa' ? 'active' : ''}
                   >
                     <td>{FormatDate(transaction.data)}</td>
-                    <td>{FormatUppercase(transaction.operation)}</td>
+                    <td onClick={() => handleIsOpenDes(transaction)}>
+                      {FormatUppercase(transaction.operation)}
+                    </td>
                     <td>{transaction.category}</td>
                     <td>
                       R${' '}
@@ -153,7 +163,7 @@ function BoxTransaction({ title, validation }) {
                     <td>
                       <IconEdit
                         onClick={() =>
-                          handleIsOpen(transaction.type, transaction._id)
+                          handleIsOpenTran(transaction.type, transaction._id)
                         }
                       />{' '}
                       -{' '}
@@ -178,11 +188,19 @@ function BoxTransaction({ title, validation }) {
           </Table>
         </Grid>
       </Container>
-      {isOpen && (
+      {isOpenTran && (
         <ModalTransaction
           option={option}
-          isOpen={isOpen}
-          onChange={(isOpen) => setIsOpen(isOpen)}
+          isOpen={isOpenTran}
+          onChange={(isOpenTran) => setIsOpenTran(isOpenTran)}
+          id={id}
+        />
+      )}
+      {isOpenDes && (
+        <ModalDescriptionTransaction
+          option={option}
+          isOpen={isOpenDes}
+          onChange={(isOpenDes) => setIsOpenDes(isOpenDes)}
           id={id}
         />
       )}

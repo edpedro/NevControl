@@ -12,7 +12,7 @@ export const Container = styled.div`
     font-size: 30px;
     font-weight: 700;
     color: var(--white);
-    margin-top: 35px;
+    margin-top: 20px;
     cursor: pointer;
     transition: 0.2s;
 

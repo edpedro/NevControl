@@ -66,6 +66,7 @@ export const Tbody = styled.tbody`
 
     &:nth-child(2) {
       font-weight: 500;
+      cursor: pointer;
     }
     &:nth-child(3) {
       font-weight: 600;

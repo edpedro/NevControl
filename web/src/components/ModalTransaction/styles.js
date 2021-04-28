@@ -16,7 +16,7 @@ export const Input = styled.input`
   width: ${(props) => (props.width ? `${props.width}px` : '490px')};
   height: 6px;
   padding: 25px;
-  margin-top: 4px;
+  margin-top: 6px;
   border: 1px solid var(--nevGrey);
   border-radius: 10px;
   font-size: 16px;
@@ -70,7 +70,8 @@ export const GridValueDate = styled.div`
     justify-content: center;
     align-items: center;
 
-    margin-top: 4px;
+    margin-top: 35px;
+    margin-bottom: 35px;
   }
 `;
 
