@@ -126,6 +126,7 @@ function ModalInvoiceCard({ isOpen, onChange, data }) {
                     >
                       <td>{FormatDate(transaction.data)}</td>
                       <td>{FormatUppercase(transaction.operation)}</td>
+                      <td>{FormatUppercase(transaction.description)}</td>
                       <td>{transaction.category}</td>
                       <td>
                         R${' '}

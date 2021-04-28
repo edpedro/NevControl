@@ -68,6 +68,9 @@ export const Tbody = styled.tbody`
       font-weight: 500;
       cursor: pointer;
     }
+    &:nth-child(2):hover {
+      color: var(--nevGree);
+    }
     &:nth-child(3) {
       font-weight: 600;
     }
