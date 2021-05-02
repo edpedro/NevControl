@@ -6,6 +6,8 @@ import Balance from '../../components/Balance';
 import BoxTransaction from '../../components/BoxTransaction';
 import CardExternal from '../../components/CardExternal';
 
+import PizzaGraph from '../../components/PizzaGraph';
+
 function Transaction() {
   return (
     <Container>
@@ -14,6 +16,10 @@ function Transaction() {
         <Balance />
       </header>
       <main>
+        <PizzaGraph
+          validation="conta"
+          title="Relatorio por Categoria - Conta"
+        />
         <BoxTransaction title="Historico Conta" validation="conta" />
         <Grid>
           <CardExternal />
