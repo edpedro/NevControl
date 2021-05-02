@@ -7,6 +7,7 @@ import BoxTransaction from '../../components/BoxTransaction';
 import QuickAccess from '../../components/QuickAccess';
 import CardExternal from '../../components/CardExternal';
 import CardNew from '../../components/CardNew';
+import TimeLineGraph from '../../components/TimeLineGraph';
 
 import { Context } from '../../Context/Context';
 
@@ -32,6 +33,7 @@ function Home() {
       </GridCard>
 
       <Grid>
+        <TimeLineGraph title="Relatorio de compras - Conta/Cartão" />
         <BoxTransaction title="Mais recente lançamento" />
         <GridItem>
           <QuickAccess wsmall={400} hsmall={200} />
