@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Close } from '../../styles/Icons';
 
 export const Grid = styled.div`
   display: flex;
@@ -132,4 +133,19 @@ export const Span = styled.div`
   font-size: 12px;
   color: var(--nevRed);
   font-weight: 600;
+`;
+
+export const IconClose = styled(Close)`
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
+  }
 `;

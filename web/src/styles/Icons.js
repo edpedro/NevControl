@@ -8,5 +8,6 @@ export {
   MoneyDollarCircle,
   EditCircle,
   DeleteBack2,
+  Close,
 } from 'styled-icons/remix-fill';
 export { MinusSm } from 'styled-icons/heroicons-solid';

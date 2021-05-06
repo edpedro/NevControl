@@ -86,7 +86,7 @@ MongoDB Cloud
 
 <br>
 
-## 🎁 Images
+## 🎁 Imagens
 
 <br>
 

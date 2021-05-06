@@ -6,7 +6,7 @@ import FormatCurrency from '../../utils/FormatCurrency';
 import FormatUppercase from '../../utils/FormatUppercase';
 import FormatDate from '../../utils/FormatDate';
 
-import { Grid, Body } from './styles';
+import { Grid, Body, IconClose } from './styles';
 
 Modal.setAppElement('#root');
 
@@ -29,7 +29,7 @@ function ModalDescriptionTransaction({ isOpen, onChange, option }) {
   function closeModal() {
     onChange(false);
   }
-  console.log(option);
+
   return (
     <>
       <Modal
@@ -39,6 +39,7 @@ function ModalDescriptionTransaction({ isOpen, onChange, option }) {
         contentLabel="Modal Description Transaction"
       >
         <Grid>
+          <IconClose onClick={closeModal} />
           <h2>Detalhe da compra</h2>
           <Body>
             <h3>

@@ -18,6 +18,7 @@ import {
   Transactions,
   Table,
   Tbody,
+  IconClose,
 } from './styles';
 
 const month = [
@@ -90,6 +91,7 @@ function ModalInvoiceCard({ isOpen, onChange, data }) {
         contentLabel="Modal Card"
       >
         <Grid>
+          <IconClose onClick={closeModal} />
           <h2>Fatura do cartão</h2>
           <Select name="month" onChange={handleChange}>
             <option value="">Selecione...</option>

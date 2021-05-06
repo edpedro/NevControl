@@ -16,6 +16,7 @@ import {
   Select,
   GridInstitution,
   Span,
+  IconClose,
 } from './styles';
 
 import Button from '../Button';
@@ -65,6 +66,7 @@ function ModalCard({ isOpen, onChange, id }) {
         contentLabel="Modal Card"
       >
         <Grid>
+          <IconClose onClick={closeModal} />
           <h2>Adicionar Cartão de Crédito</h2>
           <Formik
             enableReinitialize={true}

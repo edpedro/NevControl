@@ -17,6 +17,7 @@ import {
   Select,
   GridType,
   Span,
+  IconClose,
 } from './styles';
 
 import Button from '../Button';
@@ -104,6 +105,7 @@ function ModalTransaction({ isOpen, onChange, option, id }) {
         contentLabel="Modal Transaction"
       >
         <Grid option={option}>
+          <IconClose onClick={closeModal} />
           <h2>Nova {option}</h2>
           <Formik
             enableReinitialize={true}

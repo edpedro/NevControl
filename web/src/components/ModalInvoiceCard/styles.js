@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Close } from '../../styles/Icons';
 
 export const Grid = styled.div`
   display: flex;
@@ -163,5 +164,19 @@ export const Select = styled.select`
   @media (max-width: 480px) {
     width: 200px;
     padding: 6px 14px 8px 16px;
+  }
+`;
+export const IconClose = styled(Close)`
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  margin: 0;
+
+  @media (max-width: 480px) {
+    width: 24px;
+    height: 24px;
   }
 `;
