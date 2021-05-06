@@ -1,20 +1,32 @@
-## PROJETO - CONTROLE FINANCEIRO PESSOAL
+<h2 align="center">
+   CONTROLE FINANCEIRO PESSOAL
+</h2>
+<br>
+<h1 align="center">
+    <img src="./assets/video1.gif">
+</h1>
 
-## Site em desenvolvimento...
+<h3 align="center">
+    <a href="https://nev-front.herokuapp.com/">🔗 Acessar a demonstração</a>
+<h3 >
+
+# Indice
+
+- [Sobre](#-sobre)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como baixar o projeto](#-como-baixar-o-projeto)
+- [Deploy](#-deploy)
+- [Imagens](#-imagens)
+
+<br>
+
+## 🔖&nbsp; Sobre
+
+O sistema **NevControl** foi desenhado para ser intuitivo e tornar sua experiência cada vez mais natural. Com poucos cliques você consegue fazer um controle incrível do seu dinheiro!
 
 ---
 
-### Demonstração do site
-
-https://nev-front.herokuapp.com/
-
-<h1 align="center">
-    <img src="./assets/video.gif">
-</h1>
-
-Sistema foi desenhado para facilitar controle de todos os gastos pessoas, tanto cartão de credito como conta, intuito e com poucos clique ter o controle do dinheiro.
-
-## Tecnologias Usadas:
+## 🚀 Tecnologias utilizadas
 
 Reactjs :
 
@@ -27,8 +39,9 @@ Reactjs :
 - formik,
 - yup,
 - react-toastify
+- bizcharts
 
-Node js :
+Nodejs :
 
 - bcrypt,
 - bcryptjs,
@@ -39,22 +52,58 @@ Node js :
 
 ---
 
-## Como baixar o projeto
+## 🗂 Como baixar o projeto
 
 ```bash
-#Clona repositório
-$ git clone https://github.com/edpedro/NevControl.git
 
-#Entra nos diretórios
-$ cd NevControl
+    # Clonar o repositório
+    $ git clone https://github.com/edpedro/NevControl.git
 
-#Entra nas pasta web e server, instalar dependência
-$ yarn
+    # Entrar no diretório
+    $ cd web
+    $ cd server
 
-#Inicia o projeto
-$ yarn start - web
-$ yarn dev - server
+    # Instalar as dependências
+    $ yarn install
 
+    # Iniciar o projeto
+    $ cd web - yarn start
+    $ cd server - yarn dev
 ```
 
-Desenvolvido por Eduardo Pedro, Edp2013.ep@gmail.com
+## 🚧 Deploy
+
+Heroku
+
+- Nodejs
+- Reactjs
+
+MongoDB Cloud
+
+- NoSql
+
+---
+
+<br>
+
+## 🎁 Images
+
+<br>
+
+<h1 align="center">
+    <img src="./assets/image1.png">
+    <img src="./assets/image2.png">
+    <img src="./assets/image3.png">
+    <img src="./assets/image4.png">
+    <img src="./assets/image5.png">
+    <img src="./assets/image6.png">
+    <img src="./assets/image7.png">
+    <img src="./assets/image8.png">
+    <img src="./assets/image9.png">
+    <img src="./assets/image10.png">
+   
+</h1>
+
+---
+
+Desenvolvido 💜 por Eduardo Pedro, Edp2013.ep@gmail.com
