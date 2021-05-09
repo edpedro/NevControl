@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post("/register", UserController.create);
 router.post("/login", UserController.login);
+router.post("/login-google", UserController.googleLogin);
 
 router.post("/transacao", auth, TransactionController.create);
 router.get("/transacao", auth, TransactionController.index);

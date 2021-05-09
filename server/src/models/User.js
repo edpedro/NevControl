@@ -51,6 +51,20 @@ userSchema.statics.findByCredentials = async (email, password) => {
   return user;
 };
 
+userSchema.statics.findByGoogleCredentials = async (email, password) => {
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return null;
+  }
+
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+  if (!isPasswordMatch) {
+    return null;
+  }
+  return user;
+};
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
