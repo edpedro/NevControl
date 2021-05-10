@@ -54,7 +54,7 @@ module.exports = {
     }
   },
   async googleLogin(req, res) {
-    const { tokenGoogle } = req.body;
+    const tokenGoogle = req.headers.authorization.replace("Bearer", "");
 
     const client = new OAuth2Client(process.env.CLIENT_ID);
 
