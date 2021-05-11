@@ -54,19 +54,17 @@ module.exports = {
     }
   },
   async googleLogin(req, res) {
-    const tokenGoogle = req.headers.authorization.replace("Bearer", "");
-
-    const client = new OAuth2Client(process.env.CLIENT_ID);
+    const { googleToken } = req.body;
 
     try {
-      if (!tokenGoogle) {
-        return res.status(401).json({
-          error: "Erro no token do google!",
-        });
+      const client = new OAuth2Client(process.env.CLIENT_ID);
+
+      if (!googleToken) {
+        return res.status(400).json({ message: "Erro.. Tente novamente" });
       }
 
       const ticket = await client.verifyIdToken({
-        idToken: tokenGoogle,
+        idToken: googleToken,
         audience: process.env.CLIENT_ID,
       });
 
