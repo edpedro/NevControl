@@ -47,6 +47,31 @@ function useAuth() {
     }
   }, []);
 
+  const handleLoginGoogle = useCallback(async (tokenGoogle) => {
+    try {
+      const {
+        data: {
+          user: { name },
+          token,
+        },
+      } = await api.post('/login-google', tokenGoogle);
+
+      localStorage.setItem('token', JSON.stringify(token));
+      localStorage.setItem('user', name);
+      api.defaults.headers.Authorization = `Bearer ${token}`;
+
+      setAuthenticated(true);
+      setLoading(true);
+      setUser(name);
+
+      toast.success('Login efetuado com sucesso!');
+
+      history.push('/');
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  }, []);
+
   const handleRegister = useCallback(async (useData) => {
     try {
       const {
@@ -87,6 +112,7 @@ function useAuth() {
     authenticated,
     loading,
     handleLogout,
+    handleLoginGoogle,
   };
 }
 

@@ -10,10 +10,16 @@ export const Box = styled.div`
   margin-top: 120px;
   width: 100%;
   max-width: 500px;
+
   h2 {
     text-align: center;
     font-size: 32px;
   }
+
+  form {
+    margin-top: 10px;
+  }
+
   div {
     p {
       font-weight: 700;

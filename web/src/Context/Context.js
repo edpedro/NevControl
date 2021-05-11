@@ -14,6 +14,7 @@ function Provider({ children }) {
     authenticated,
     loading,
     handleLogout,
+    handleLoginGoogle,
   } = useAuth();
   const {
     balance,
@@ -62,6 +63,7 @@ function Provider({ children }) {
         handleMonthCurrent,
         handleShowInvoceCreditCard,
         invoceCreditCard,
+        handleLoginGoogle,
       }}
     >
       {children}
