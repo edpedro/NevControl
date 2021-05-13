@@ -14,6 +14,7 @@
 
 - [Sobre](#-sobre)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Google Authenticated](#-google-authenticated)
 - [Como baixar o projeto](#-como-baixar-o-projeto)
 - [Deploy](#-deploy)
 - [Imagens](#-imagens)
@@ -51,6 +52,22 @@ Nodejs :
 - morgan
 
 ---
+
+<br>
+
+## 💼 Google Authenticated
+
+### web
+
+- react-google-login
+
+### server
+
+- google-auth-library
+
+---
+
+<br>
 
 ## 🗂 Como baixar o projeto
 
