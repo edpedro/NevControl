@@ -7,6 +7,8 @@ import { Context } from '../../Context/Context';
 
 import Button from '../../components/Button';
 
+const { REACT_APP_CLIENT_ID } = process.env;
+
 function Login() {
   const { handleLogin, handleLoginGoogle } = useContext(Context);
   const [data, setData] = useState({ email: '', password: '' });
@@ -21,12 +23,11 @@ function Login() {
   }
 
   function onSignIn(googleUser) {
-    const id_token = googleUser.getAuthResponse().id_token;
+    const id_token = googleUser.tokenId;
 
     if (!id_token) {
       return;
     }
-
     handleLoginGoogle({ googleToken: id_token });
   }
 
@@ -35,7 +36,7 @@ function Login() {
       <Container>
         <Box>
           <GoogleLogin
-            clientId={process.env.REACT_APP_CLIENT_ID}
+            clientId={REACT_APP_CLIENT_ID}
             buttonText="Continuar com o Google"
             onSuccess={onSignIn}
             onFailure={onSignIn}
