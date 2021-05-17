@@ -14,6 +14,10 @@ export const Box = styled.div`
     text-align: center;
     font-size: 32px;
   }
+  form {
+    margin-top: 4px;
+  }
+
   div {
     p {
       font-weight: 700;

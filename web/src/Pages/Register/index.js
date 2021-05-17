@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-
+import GoogleLogin from 'react-google-login';
 import { Link } from 'react-router-dom';
 import { Container, Box, Label, Input } from './styles.js';
 
@@ -7,8 +7,10 @@ import { Context } from '../../Context/Context';
 
 import Button from '../../components/Button';
 
+const { REACT_APP_CLIENT_ID } = process.env;
+
 function Register() {
-  const { handleRegister } = useContext(Context);
+  const { handleRegister, handleLoginGoogle } = useContext(Context);
   const [data, setData] = useState({ name: '', email: '', password: '' });
 
   function handleChange(event) {
@@ -20,9 +22,26 @@ function Register() {
     handleRegister(data);
   }
 
+  function onSignIn(googleUser) {
+    const id_token = googleUser.tokenId;
+
+    if (!id_token) {
+      return;
+    }
+    handleLoginGoogle({ googleToken: id_token });
+  }
+
   return (
     <Container>
       <Box>
+        <GoogleLogin
+          clientId={REACT_APP_CLIENT_ID}
+          buttonText="Acessa com o Google"
+          onSuccess={onSignIn}
+          onFailure={onSignIn}
+          cookiePolicy={'single_host_origin'}
+          className="button-google"
+        />
         <form onSubmit={handleSubmint}>
           <h2>Cadastre-se</h2>
           <div>
