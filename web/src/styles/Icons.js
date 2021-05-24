@@ -1,4 +1,5 @@
 export { LogInCircle } from 'styled-icons/boxicons-regular';
+export { FilePdf } from 'styled-icons/boxicons-solid';
 export {
   ArrowUpCircleFill,
   ArrowDownCircleFill,

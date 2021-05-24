@@ -1,6 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, createRef } from 'react';
 import Modal from 'react-modal';
 import moment from 'moment';
+import Pdf from 'react-to-pdf';
 
 import { Context } from '../../Context/Context';
 
@@ -19,6 +20,7 @@ import {
   Table,
   Tbody,
   IconClose,
+  IconPDF,
 } from './styles';
 
 const month = [
@@ -45,13 +47,15 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     width: '100%',
-    maxWidth: '900px',
+    maxWidth: '860px',
     maxHeight: '600px',
     height: '100%',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
   },
 };
+
+const ref = createRef();
 
 function ModalInvoiceCard({ isOpen, onChange, data }) {
   const { invoceCreditCard, handleShowInvoceCreditCard } = useContext(Context);
@@ -90,7 +94,17 @@ function ModalInvoiceCard({ isOpen, onChange, data }) {
         style={customStyles}
         contentLabel="Modal Card"
       >
-        <Grid>
+        {transactions && transactions.length > 0 && (
+          <Pdf targetRef={ref} filename={`${dateCurrent}.pdf`}>
+            {({ toPdf }) => (
+              <button onClick={toPdf}>
+                <IconPDF />
+              </button>
+            )}
+          </Pdf>
+        )}
+
+        <Grid ref={ref}>
           <IconClose onClick={closeModal} />
           <h2>Fatura do cartão</h2>
           <Select name="month" onChange={handleChange}>

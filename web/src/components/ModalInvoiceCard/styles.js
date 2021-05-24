@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Close } from '../../styles/Icons';
+import { Close, FilePdf } from '../../styles/Icons';
 
 export const Grid = styled.div`
   display: flex;
@@ -152,7 +152,6 @@ export const Select = styled.select`
   border-radius: 10px;
   font-size: 14px;
   font-weight: 300;
-  margin: 10px 10px;
 
   &:focus {
     outline: none !important;
@@ -179,4 +178,10 @@ export const IconClose = styled(Close)`
     width: 24px;
     height: 24px;
   }
+`;
+export const IconPDF = styled(FilePdf)`
+  width: 35px;
+  height: 35px;
+  fill: var(--nevGree);
+  cursor: pointer;
 `;
